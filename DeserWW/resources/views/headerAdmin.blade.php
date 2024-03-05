@@ -3,6 +3,11 @@
         <h2>CONTROL DE ADMINISTRACIÓN</h2>
     </div>
     <div>
-        <img src="../../public/images/user-icon-on-transparent-background-free-png.png" alt="Imagen Usuario">
+        <?php
+            $imagePath = public_path('images/icono.png');
+
+        ?>
+
+        <img src="{{ asset('images/icono.png') }}" alt="Icono">
     </div>
 </header>
