@@ -6,7 +6,15 @@
     <title>Admin</title>
 </head>
 @include('headerAdmin')
-<body>
-
+<body id="principalAdmin">
+    <div>
+    <div> <img src="{{ asset('images/carrera.jpg') }}" alt="Icono"></div>
+    <div> <img src="{{ asset('images/pilotos.jpg') }}" alt="Icono"></div>
+    <div><img src="{{ asset('images/logo.png') }}" alt="Icono"></div>
+    <div><img src="{{ asset('images/nike.png') }}" alt="Icono"></div>
+    <div> <img src="{{ asset('images/dkv.png') }}" alt="Icono"></div>
+    
+    </div>    
+    
 </body>
 </html>
