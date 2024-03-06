@@ -20,7 +20,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            height: 100%;
+            height: 100vh;
             text-align: center; /* Centra horizontalmente el contenido */
         }
         .imagen {
