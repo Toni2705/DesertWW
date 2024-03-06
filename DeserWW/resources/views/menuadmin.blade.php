@@ -48,9 +48,11 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+                <a href="{{ route('mostrar-datos') }}">
                     <div class="imagen">
                         <img src="{{ asset('images/carrera.jpg') }}" alt="Icono" class="img">
                     </div>
+                </a>
                     <div class="imagen">
                         <img src="{{ asset('images/dkv.png') }}" alt="Icono" class="img">
                     </div>
