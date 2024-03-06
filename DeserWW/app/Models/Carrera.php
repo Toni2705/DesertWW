@@ -61,5 +61,31 @@ class Carrera extends Model
         // Retornamos falso si no se encontró la carrera a editar
         return false;
     }
+    public static function agregarCarrera($datos)
+{
+    // Crear una nueva instancia de Carrera con los datos proporcionados
+    $nuevaCarrera = new Carrera();
+    $nuevaCarrera->id_corredor = $datos['id_corredor'];
+    $nuevaCarrera->nombre = $datos['nombre'];
+    $nuevaCarrera->descripcion = $datos['descripcion'];
+    $nuevaCarrera->desnivel = $datos['desnivel'];
+    $nuevaCarrera->mapa = $datos['mapa'];
+    $nuevaCarrera->max_participantes = $datos['max_participantes'];
+    $nuevaCarrera->km = $datos['km'];
+    $nuevaCarrera->fecha_inicio = $datos['fecha_inicio'];
+    $nuevaCarrera->hora_inicio = $datos['hora_inicio'];
+    $nuevaCarrera->salida = $datos['salida'];
+    $nuevaCarrera->cartel = $datos['cartel'];
+    $nuevaCarrera->precio_patrocinar = $datos['precio_patrocinar'];
+    $nuevaCarrera->precio_inscripcion = $datos['precio_inscripcion'];
+    $nuevaCarrera->id_sponsor = $datos['id_sponsor'];
+
+    // Guardar la nueva carrera en la base de datos
+    $nuevaCarrera->save();
+
+    // Retornar la carrera recién creada
+    return $nuevaCarrera;
+}
+
 
 }

@@ -23,3 +23,7 @@ Route::get('/mostrar-datos-en-vista', [CarreraController::class, 'mostrarDatosEn
 Route::post('/editar-carreras', [CarreraController::class, 'editarCarreras1'])->name('editar-carreras');
 
 Route::get('/carreras/{id}/editar', [CarreraController::class, 'editarCarrera'])->name('editar-carrera');
+
+Route::get('/agregar-carrera', [CarreraController::class, 'añadirCarreras'])->name('agregar-carrera');
+
+Route::post('/agregar-carrera', [CarreraController::class, 'agregarCarrera'])->name('guardar-carrera');

@@ -7,6 +7,9 @@
 </head>
 <body>
     <h2>Carreras</h2>
+
+    <h4><a href="{{ route('agregar-carrera') }}">Añadir</a></h4>
+
     <table>
     <thead>
         <tr>
