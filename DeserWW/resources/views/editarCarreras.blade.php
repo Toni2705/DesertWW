@@ -3,70 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar</title>
+    <title>Editar Carrera</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h2>Editar Carrera</h2>
+    <div class="container">
+        <form action="{{ route('editar-carreras') }}" method="POST" class="mt-4">
+        <h2 class="mt-5">Editar Carrera</h2>
 
-<form action="{{ route('editar-carreras') }}" method="POST">
-    @csrf
-    <input type="hidden" name="id" value="{{ $carrera->id }}">
-    <div>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required value="{{ $carrera->nombre }}">
+            @csrf
+            <input type="hidden" name="id" value="{{ $carrera->id }}">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required value="{{ $carrera->nombre }}">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" class="form-control" required>{{ $carrera->descripcion }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="desnivel">Desnivel:</label>
+                <input type="text" id="desnivel" name="desnivel" class="form-control" required value="{{ $carrera->desnivel }}">
+            </div>
+            <div class="form-group">
+                <label for="mapa">Mapa:</label>
+                <input type="text" id="mapa" name="mapa" class="form-control" required value="{{ $carrera->mapa }}">
+            </div>
+            <div class="form-group">
+                <label for="max_participantes">Máximo de participantes:</label>
+                <input type="number" id="max_participantes" name="max_participantes" class="form-control" required value="{{ $carrera->max_participantes }}">
+            </div>
+            <div class="form-group">
+                <label for="km">Kilómetros:</label>
+                <input type="number" id="km" name="km" class="form-control" required value="{{ $carrera->km }}">
+            </div>
+            <div class="form-group">
+                <label for="fecha_inicio">Fecha de inicio:</label>
+                <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control" required value="{{ $carrera->fecha_inicio }}">
+            </div>
+            <div class="form-group">
+                <label for="hora_inicio">Hora de inicio:</label>
+                <input type="time" id="hora_inicio" name="hora_inicio" class="form-control" required value="{{ $carrera->hora_inicio }}">
+            </div>
+            <div class="form-group">
+                <label for="salida">Salida:</label>
+                <input type="text" id="salida" name="salida" class="form-control" required value="{{ $carrera->salida }}">
+            </div>
+            <div class="form-group">
+                <label for="cartel">Cartel:</label>
+                <input type="text" id="cartel" name="cartel" class="form-control" required value="{{ $carrera->cartel }}">
+            </div>
+            <div class="form-group">
+                <label for="precio_patrocinar">Precio para patrocinar:</label>
+                <input type="number" id="precio_patrocinar" name="precio_patrocinar" class="form-control" required value="{{ $carrera->precio_patrocinar }}">
+            </div>
+            <div class="form-group">
+                <label for="precio_inscripcion">Precio de inscripción:</label>
+                <input type="number" id="precio_inscripcion" name="precio_inscripcion" class="form-control" required value="{{ $carrera->precio_inscripcion }}">
+            </div>
+            <div class="form-group">
+                <input type="hidden" id="id_sponsor" name="id_sponsor" value="{{ $carrera->id_sponsor }}">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" required name="descripcion">{{ $carrera->descripcion }}</textarea>
-    </div>
-    <div>
-        <label for="desnivel">Desnivel:</label>
-        <input type="text" id="desnivel" required name="desnivel" value="{{ $carrera->desnivel }}">
-    </div>
-    <div>
-        <label for="mapa">Mapa:</label>
-        <input type="text" id="mapa" required name="mapa" value="{{ $carrera->mapa }}">
-    </div>
-    <div>
-        <label for="max_participantes">Máximo de participantes:</label>
-        <input type="number" id="max_participantes" required name="max_participantes" value="{{ $carrera->max_participantes }}">
-    </div>
-    <div>
-        <label for="km">Kilómetros:</label>
-        <input type="number" id="km" name="km" required value="{{ $carrera->km }}">
-    </div>
-    <div>
-        <label for="fecha_inicio">Fecha de inicio:</label>
-        <input type="date" id="fecha_inicio" required name="fecha_inicio" value="{{ $carrera->fecha_inicio }}">
-    </div>
-    <div>
-        <label for="hora_inicio">Hora de inicio:</label>
-        <input type="time" id="hora_inicio" required name="hora_inicio" value="{{ $carrera->hora_inicio }}">
-    </div>
-    <div>
-        <label for="salida">Salida:</label>
-        <input type="text" id="salida" required name="salida" value="{{ $carrera->salida }}">
-    </div>
-    <div>
-        <label for="cartel">Cartel:</label>
-        <input type="text" id="cartel" required name="cartel" value="{{ $carrera->cartel }}">
-    </div>
-    <div>
-        <label for="precio_patrocinar">Precio para patrocinar:</label>
-        <input type="number" id="precio_patrocinar" required name="precio_patrocinar" value="{{ $carrera->precio_patrocinar }}">
-    </div>
-    <div>
-        <label for="precio_inscripcion">Precio de inscripción:</label>
-        <input type="number" id="precio_inscripcion" required name="precio_inscripcion" value="{{ $carrera->precio_inscripcion }}">
-    </div>
-    <div>
-        <input type="hidden" id="id_sponsor" name="id_sponsor" value="{{ $carrera->id_sponsor }}">
-    </div>
-    <div>
-        <button type="submit"class="btn btn-primary">Guardar cambios</button>
-    </div>
-</form>
-
-
 </body>
 </html>
