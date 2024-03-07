@@ -51,7 +51,9 @@
                     </a>
                 </div>
                 <div class="imagen">
+                <a href="{{ route('mostrar-sponsor') }}">
                     <img src="{{ asset('images/nike.png') }}" alt="Icono" class="img">
+                </a>
                 </div>
             </div>
             <div class="col-md-6">

@@ -20,6 +20,7 @@ Route::get('/', function () {
 use App\Http\Controllers\SeguroController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\CorredorController;
+use App\Http\Controllers\SponsorController;
 
 Route::get('/mostrar-datos-en-vista', [CarreraController::class, 'mostrarDatosEnVista'])->name('mostrar-datos');
 
@@ -44,3 +45,14 @@ Route::get('/seguros/{id}/editar', [SeguroController::class, 'editarSeguro'])->n
 Route::get('/agregar-seguro', [SeguroController::class, 'añadirSeguros'])->name('agregar-seguro');
 
 Route::post('/agregar-seguro', [SeguroController::class, 'agregarSeguro'])->name('guardar-seguro');
+
+//Sponsors
+Route::get('/mostrar-sponsor', [SponsorController::class, 'mostrarDatosEnVista'])->name('mostrar-sponsor');
+
+Route::get('/añadir-sponsor', [SponsorController::class, 'añadirSponsor'])->name('añadir-sponsor');
+
+Route::post('/añadir-sponsor', [SponsorController::class, 'agregarSponsor'])->name('guardar-sponsor');
+
+Route::get('/editar-sponsor/{id}', [SponsorController::class, 'editarSponsor'])->name('editar-sponsor');
+
+Route::post('/editar-sponsor', [SponsorController::class, 'editarSponsors'])->name('actualizar-sponsor');
