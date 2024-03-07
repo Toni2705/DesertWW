@@ -45,23 +45,25 @@
     <div class="container mx-auto">
         <div class="row">
             <div class="col-md-6">
-                <a href="{{ route('mostrar-corredores') }}">
-                    <div class="imagen">
+                <div class="imagen">
+                    <a href="{{ route('mostrar-corredores') }}">
                         <img src="{{ asset('images/pilotos.png') }}" alt="Icono" class="img">
-                    </div>
-                </a>
+                    </a>
+                </div>
                 <div class="imagen">
                     <img src="{{ asset('images/nike.png') }}" alt="Icono" class="img">
                 </div>
             </div>
             <div class="col-md-6">
-                <a href="{{ route('mostrar-datos') }}">
-                    <div class="imagen">
-                        <img src="{{ asset('images/carrera.jpg') }}" alt="Icono" class="img">
-                    </div>
-                </a>
                 <div class="imagen">
-                    <img src="{{ asset('images/dkv.png') }}" alt="Icono" class="img">
+                    <a href="{{ route('mostrar-datos') }}">
+                        <img src="{{ asset('images/carrera.jpg') }}" alt="Icono" class="img">
+                    </a>
+                </div>
+                <div class="imagen">
+                    <a href="{{ route('mostrar-seguros') }}">
+                        <img src="{{ asset('images/dkv.png') }}" alt="Icono" class="img">
+                    </a>
                 </div>
             </div>
         </div>
