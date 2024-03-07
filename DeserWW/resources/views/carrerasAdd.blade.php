@@ -10,10 +10,6 @@
     <form action="{{ route('agregar-carrera') }}" method="POST">
         @csrf
         <div>
-            <label for="id_corredor">ID Corredor:</label>
-            <input type="text" id="id_corredor" name="id_corredor" required>
-        </div>
-        <div>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
         </div>

@@ -12,10 +12,6 @@
     @csrf
     <input type="hidden" name="id" value="{{ $carrera->id }}">
     <div>
-        <label for="id_corredor">ID Corredor:</label>
-        <input type="text" id="id_corredor" name="id_corredor" required value="{{ $carrera->id_corredor }}">
-    </div>
-    <div>
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required value="{{ $carrera->nombre }}">
     </div>

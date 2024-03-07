@@ -10,7 +10,7 @@ class Carrera extends Model
     use HasFactory;
      // Define los atributos de la clase Carrera
      protected $fillable = [
-        'id', 'id_corredor', 'nombre', 'descripcion', 'desnivel',
+        'id', 'nombre', 'descripcion', 'desnivel',
         'mapa', 'max_participantes', 'km', 'fecha_inicio',
         'hora_inicio', 'salida', 'cartel', 'precio_patrocinar',
         'precio_inscripcion', 'id_sponsor'
@@ -63,29 +63,28 @@ class Carrera extends Model
     }
     public static function agregarCarrera($datos)
 {
-    // Crear una nueva instancia de Carrera con los datos proporcionados
-    $nuevaCarrera = new Carrera();
-    $nuevaCarrera->id_corredor = $datos['id_corredor'];
-    $nuevaCarrera->nombre = $datos['nombre'];
-    $nuevaCarrera->descripcion = $datos['descripcion'];
-    $nuevaCarrera->desnivel = $datos['desnivel'];
-    $nuevaCarrera->mapa = $datos['mapa'];
-    $nuevaCarrera->max_participantes = $datos['max_participantes'];
-    $nuevaCarrera->km = $datos['km'];
-    $nuevaCarrera->fecha_inicio = $datos['fecha_inicio'];
-    $nuevaCarrera->hora_inicio = $datos['hora_inicio'];
-    $nuevaCarrera->salida = $datos['salida'];
-    $nuevaCarrera->cartel = $datos['cartel'];
-    $nuevaCarrera->precio_patrocinar = $datos['precio_patrocinar'];
-    $nuevaCarrera->precio_inscripcion = $datos['precio_inscripcion'];
-    $nuevaCarrera->id_sponsor = $datos['id_sponsor'];
+        // Crear una nueva instancia de Carrera con los datos proporcionados
+        $nuevaCarrera = new Carrera();
+        $nuevaCarrera->nombre = $datos['nombre'];
+        $nuevaCarrera->descripcion = $datos['descripcion'];
+        $nuevaCarrera->desnivel = $datos['desnivel'];
+        $nuevaCarrera->mapa = $datos['mapa'];
+        $nuevaCarrera->max_participantes = $datos['max_participantes'];
+        $nuevaCarrera->km = $datos['km'];
+        $nuevaCarrera->fecha_inicio = $datos['fecha_inicio'];
+        $nuevaCarrera->hora_inicio = $datos['hora_inicio'];
+        $nuevaCarrera->salida = $datos['salida'];
+        $nuevaCarrera->cartel = $datos['cartel'];
+        $nuevaCarrera->precio_patrocinar = $datos['precio_patrocinar'];
+        $nuevaCarrera->precio_inscripcion = $datos['precio_inscripcion'];
+        $nuevaCarrera->id_sponsor = $datos['id_sponsor'];
 
-    // Guardar la nueva carrera en la base de datos
-    $nuevaCarrera->save();
+        // Guardar la nueva carrera en la base de datos
+        $nuevaCarrera->save();
 
-    // Retornar la carrera recién creada
-    return $nuevaCarrera;
-}
+        // Retornar la carrera recién creada
+        return $nuevaCarrera;
+    }
 
 
 }

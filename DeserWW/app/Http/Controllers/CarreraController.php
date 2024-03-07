@@ -17,7 +17,6 @@ class CarreraController extends Controller
     }
     public function añadirCarreras()
     {
-        // Pasar los datos a la vista
         return view('carrerasAdd');
     }
     public function editarCarrera($id)
@@ -49,7 +48,6 @@ class CarreraController extends Controller
         // Validar los datos del formulario (puedes agregar las reglas de validación según tus necesidades)
 
         $request->validate([
-            'id_corredor' => 'required',
             'nombre' => 'required',
             'descripcion' => 'required',
             'desnivel' => 'required',

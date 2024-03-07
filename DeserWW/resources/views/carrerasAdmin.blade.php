@@ -14,7 +14,6 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Corredor</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Desnivel</th>
@@ -35,7 +34,6 @@
         @foreach ($datos as $dato)
         <tr>
             <td>{{ $dato->id }}</td>
-            <td>{{ $dato->id_corredor }}</td>
             <td>{{ $dato->nombre }}</td>
             <td>{{ $dato->descripcion }}</td>
             <td>{{ $dato->desnivel }}</td>
