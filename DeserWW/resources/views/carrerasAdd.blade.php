@@ -62,7 +62,7 @@
             <input type="text" id="id_sponsor" name="id_sponsor" required>
         </div>
         <div>
-            <button type="submit">Agregar Carrera</button>
+            <button type="submit"class="btn btn-primary">Agregar Carrera</button>
         </div>
     </form>
 </body>

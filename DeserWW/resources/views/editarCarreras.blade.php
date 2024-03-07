@@ -63,7 +63,7 @@
         <input type="hidden" id="id_sponsor" name="id_sponsor" value="{{ $carrera->id_sponsor }}">
     </div>
     <div>
-        <button type="submit">Guardar cambios</button>
+        <button type="submit"class="btn btn-primary">Guardar cambios</button>
     </div>
 </form>
 

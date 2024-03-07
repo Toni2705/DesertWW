@@ -30,7 +30,7 @@
         <input type="text" id="principal" name="principal" required value="{{ $sponsor->principal }}">
     </div>
     <div>
-        <button type="submit">Guardar cambios</button>
+        <button type="submit"class="btn btn-primary">Guardar cambios</button>
     </div>
 </form>
 </body>

@@ -9,7 +9,7 @@
 <body>
 <h2>Patrocinadores</h2>
 
-<h4><a href="{{ route('añadir-sponsor') }}">Añadir</a></h4>
+<h4><a href="{{ route('añadir-sponsor') }}"class="btn btn-primary">Añadir</a></h4>
 <div class="container">
 <table class="table table-bordered">
     <thead>
@@ -32,7 +32,7 @@
             <td>{{ $dato->CIF }}</td>
             <td>{{ $dato->logo }}</td>
             <td>{{ $dato->principal }}</td>
-            <td><a href="{{ route('editar-sponsor', ['id' => $dato->id]) }}">Editar</a></td>
+            <td><a href="{{ route('editar-sponsor', ['id' => $dato->id]) }}"class="btn btn-primary">Editar</a></td>
         
 
         </tr>

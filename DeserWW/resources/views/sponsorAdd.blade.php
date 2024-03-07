@@ -30,7 +30,7 @@
             <input type="text" id="principal" name="principal" required>
         </div>
         <div>
-            <button type="submit">Agregar Sponsor</button>
+            <button type="submit"class="btn btn-primary">Agregar Sponsor</button>
         </div>
     </form>
 </body>
