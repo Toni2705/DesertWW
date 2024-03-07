@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,58 +8,65 @@
     <title>Admin</title>
     <style>
         /* Estilos personalizados */
-        body{
+        body {
             overflow-y: hidden;
             margin: 0;
         }
 
         #contenidoPrincipal {
-            background-image: url('{{ asset("images/fondo.png") }}'); 
-            background-size: cover; /* La imagen de fondo cubrirá todo el contenedor sin repetirse */
+            background-image: url('{{ asset("images/fondo.png") }}');
+            background-size: cover;
+            /* La imagen de fondo cubrirá todo el contenedor sin repetirse */
             background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             height: 100vh;
-            text-align: center; /* Centra horizontalmente el contenido */
+            text-align: center;
+            /* Centra horizontalmente el contenido */
         }
+
         .imagen {
             margin-bottom: 20px;
         }
-        .img{
+
+        .img {
             width: 250px;
             height: 310px;
             border-radius: 10%;
-            border-style: solid ;
+            border-style: solid;
             border-color: black;
         }
     </style>
 </head>
 @include('headerAdmin')
-    <div id="contenidoPrincipal">
-        <div class="container mx-auto">
-            <div class="row">
-                <div class="col-md-6">
+<div id="contenidoPrincipal">
+    <div class="container mx-auto">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ route('mostrar-corredores') }}">
                     <div class="imagen">
                         <img src="{{ asset('images/pilotos.png') }}" alt="Icono" class="img">
                     </div>
-                    <div class="imagen">
-                        <img src="{{ asset('images/nike.png') }}" alt="Icono" class="img">
-                    </div>
+                </a>
+                <div class="imagen">
+                    <img src="{{ asset('images/nike.png') }}" alt="Icono" class="img">
                 </div>
-                <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
                 <a href="{{ route('mostrar-datos') }}">
                     <div class="imagen">
                         <img src="{{ asset('images/carrera.jpg') }}" alt="Icono" class="img">
                     </div>
                 </a>
-                    <div class="imagen">
-                        <img src="{{ asset('images/dkv.png') }}" alt="Icono" class="img">
-                    </div>
+                <div class="imagen">
+                    <img src="{{ asset('images/dkv.png') }}" alt="Icono" class="img">
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
+
 </html>

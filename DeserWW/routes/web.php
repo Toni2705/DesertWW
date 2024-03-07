@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('menuadmin');
 });
 use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\CorredorController;
 
 Route::get('/mostrar-datos-en-vista', [CarreraController::class, 'mostrarDatosEnVista'])->name('mostrar-datos');
 
@@ -27,3 +28,5 @@ Route::get('/carreras/{id}/editar', [CarreraController::class, 'editarCarrera'])
 Route::get('/agregar-carrera', [CarreraController::class, 'añadirCarreras'])->name('agregar-carrera');
 
 Route::post('/agregar-carrera', [CarreraController::class, 'agregarCarrera'])->name('guardar-carrera');
+
+Route::get('/mostrar-corredores', [CorredorController::class, 'mostrarDatosEnVista'])->name('mostrar-corredores');

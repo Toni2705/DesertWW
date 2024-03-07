@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('corredores', function (Blueprint $table) {
+        Schema::create('corredors', function (Blueprint $table) {
             $table->id();
             $table->string('dni')->unique();
             $table->string('nombre');
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('corredores');
+        Schema::dropIfExists('corredors');
     }
 };

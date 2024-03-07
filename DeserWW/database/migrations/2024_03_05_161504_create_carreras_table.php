@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('carreras', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_corredor'); // Nueva columna
             $table->string('nombre');
             $table->text('descripcion');
             $table->integer('desnivel');
@@ -31,7 +30,6 @@ return new class extends Migration
             $table->timestamps();
 
             // Claves foráneas
-            $table->foreign('id_corredor')->references('id')->on('corredores'); // Clave foránea a la tabla corredores
             $table->foreign('id_sponsor')->references('id')->on('sponsors');
         });
     }

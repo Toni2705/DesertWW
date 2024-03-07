@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Claves foráneas
-            $table->foreign('id_corredor')->references('id')->on('corredores');
+            $table->foreign('id_corredor')->references('id')->on('corredors');
             $table->foreign('id_carrera')->references('id')->on('carreras');
         });
     }
