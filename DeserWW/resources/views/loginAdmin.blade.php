@@ -60,19 +60,20 @@
     <div class="wrapper">
         <div class="login-box">
             <h2 class="text-center mb-4">Login</h2>
-            <form action="" method="POST">
+            <form action="{{ route('login') }}" method="POST">
+            @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">DNI</label>
                     <div class="input-group">
                         <span class="input-group-text"><ion-icon name="card"></ion-icon></span>
-                        <input type="email" class="form-control" id="dni" required>
+                        <input type="text" class="form-control" id="dni" name="dni" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
                         <span class="input-group-text"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" class="form-control" id="password" required>
+                        <input type="password" class="form-control" id="password" name="password" required>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-login">Login</button>

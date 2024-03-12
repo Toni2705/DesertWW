@@ -21,6 +21,7 @@ use App\Http\Controllers\SeguroController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\CorredorController;
 use App\Http\Controllers\SponsorController;
+//ADMIN
 
 Route::get('/mostrar-datos-en-vista', [CarreraController::class, 'mostrarDatosEnVista'])->name('mostrar-datos');
 
@@ -34,6 +35,23 @@ Route::post('/agregar-carrera', [CarreraController::class, 'agregarCarrera'])->n
 
 // CORREDORES
 Route::get('/mostrar-corredores', [CorredorController::class, 'mostrarDatosEnVista'])->name('mostrar-corredores');
+// Ruta para mostrar el formulario de inicio de sesión
+Route::get('/', function () {
+    return view('loginAdmin');
+});
+
+// Ruta para procesar el formulario de inicio de sesión
+Route::post('/', [CorredorController::class, 'login'])->name('login');
+
+// Ruta para el menú principal
+Route::get('/menuprincipal', function () {
+    return view('menuprincipal');
+})->name('menuprincipal');
+
+// Ruta para el menú del administrador
+Route::get('/menuadmin', function () {
+    return view('menuadmin');
+})->name('menuadmin');
 
 // SEGUROS
 Route::get('/mostrar-seguros', [SeguroController::class, 'mostrarDatosEnVista'])->name('mostrar-seguros');
