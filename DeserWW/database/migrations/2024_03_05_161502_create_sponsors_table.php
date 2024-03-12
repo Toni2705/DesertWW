@@ -29,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Eliminar la tabla 'sponsors'
         Schema::dropIfExists('sponsors');
     }
 };

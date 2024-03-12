@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dorsales', function (Blueprint $table) {
+        Schema::create('dwws', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_corredor');
-            $table->unsignedBigInteger('id_carrera');
-            $table->string('qr');
+            $table->string('nombre');
+            $table->string('CIF')->unique();
+            $table->string('telefono');
+            $table->string('direccion');
+            $table->float('precio_principal');
             // Otras columnas que puedas necesitar
             $table->timestamps();
-
-            // Claves foráneas
-            $table->foreign('id_corredor')->references('id')->on('corredors');
-            $table->foreign('id_carrera')->references('id')->on('carreras');
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dorsales');
+        Schema::dropIfExists('dwws');
     }
 };

@@ -25,23 +25,17 @@ return new class extends Migration
             $table->string('cartel');
             $table->float('precio_patrocinar');
             $table->float('precio_inscripcion');
-            $table->unsignedBigInteger('id_sponsor');
             // Otras columnas que puedas necesitar
             $table->timestamps();
-
-            // Claves foráneas
-            $table->foreign('id_sponsor')->references('id')->on('sponsors');
         });
     }
-
-
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
+        // Eliminar la tabla 'carreras'
         Schema::dropIfExists('carreras');
     }
 };

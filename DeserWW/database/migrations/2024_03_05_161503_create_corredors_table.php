@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('socio');
             $table->string('numero_federado')->nullable();
             $table->unsignedBigInteger('id_seguro');
-            // Otras columnas que puedas necesitar
+            $table->enum('rol', ['usuario', 'admin']);
             $table->timestamps();
 
             // Claves foráneas

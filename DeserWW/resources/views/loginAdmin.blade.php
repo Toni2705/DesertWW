@@ -64,7 +64,7 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">DNI</label>
                     <div class="input-group">
-                        <span class="input-group-text"><ion-icon name="mail"></ion-icon></span>
+                        <span class="input-group-text"><ion-icon name="card"></ion-icon></span>
                         <input type="email" class="form-control" id="dni" required>
                     </div>
                 </div>

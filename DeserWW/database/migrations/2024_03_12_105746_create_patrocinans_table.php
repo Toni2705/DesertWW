@@ -11,24 +11,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dww', function (Blueprint $table) {
+        Schema::create('patrocinans', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('CIF')->unique();
-            $table->string('telefono');
-            $table->string('direccion');
-            $table->float('precio_principal');
-            // Otras columnas que puedas necesitar
+            $table->unsignedBigInteger('carrera_id');
+            $table->unsignedBigInteger('sponsor_id');
             $table->timestamps();
+
+            // Claves foráneas
+            $table->foreign('carrera_id')->references('id')->on('carreras');
+            $table->foreign('sponsor_id')->references('id')->on('sponsors');
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('dww');
+        Schema::dropIfExists('patrocinans');
     }
 };
