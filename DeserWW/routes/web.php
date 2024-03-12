@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('menuadmin');
+    return view('loginAdmin');
 });
 
 use App\Http\Controllers\SeguroController;
