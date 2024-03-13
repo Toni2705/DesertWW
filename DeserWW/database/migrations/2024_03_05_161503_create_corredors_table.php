@@ -19,15 +19,15 @@ return new class extends Migration
             $table->string('contrasena');
             $table->string('direccion');
             $table->date('nacimiento');
-            $table->enum('nivel', ['PRO', 'OPEN']);
-            $table->boolean('socio');
+            $table->enum('nivel', ['PRO', 'OPEN'])->nullable();
+            $table->boolean('socio')->nullable();
             $table->string('numero_federado')->nullable();
-            $table->unsignedBigInteger('id_seguro');
+            $table->unsignedBigInteger('id_seguro')->nullable();
             $table->enum('rol', ['usuario', 'admin']);
             $table->timestamps();
 
             // Claves foráneas
-            $table->foreign('id_seguro')->references('id')->on('seguros');
+            $table->foreign('id_seguro')->references('id')->on('seguros')->nullable();
         });
     }
 
