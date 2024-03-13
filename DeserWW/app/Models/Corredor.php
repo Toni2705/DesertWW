@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
+
 
 class Corredor extends Model
 {
@@ -24,13 +26,16 @@ class Corredor extends Model
         return $datos;
     }
     public static function buscarUsuario($dni, $contraseña)
-    {
-        // Buscar un corredor con el DNI y la contraseña proporcionados
-        $corredor = Corredor::where('dni', $dni)
-                            ->where('contrasena', $contraseña)
-                            ->first();
+{
+    // Buscar un corredor con el DNI proporcionado
+    $corredor = Corredor::where('dni', $dni)->first();
 
-        // Devolver el corredor encontrado (o null si no se encuentra)
-        return $corredor;
+    // Verificar si se encontró un corredor
+    if ($corredor) {
+        // Verificar si la contraseña proporcionada coincide con la almacenada en la base de datos
+        if ($contraseña === $corredor->contrasena) {            
+            return $corredor;
+        }
     }
+}
 }

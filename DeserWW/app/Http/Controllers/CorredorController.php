@@ -22,11 +22,12 @@ class CorredorController extends Controller
             'dni' => 'required',
             'password' => 'required',
         ]);
-
+        $hassed = hash('sha256', $request->password);
+        echo $hassed;
         // Llamar a la función del modelo para buscar al usuario
-        $usuario = Corredor::buscarUsuario($request->dni, $request->password);
+        $usuario = Corredor::buscarUsuario($request->dni, $hassed);
 
-        // Verificar si se encontró un usuario
+        //Verificar si se encontró un usuario
         if ($usuario) {
             // Verificar el rol del usuario
             if ($usuario->rol === 'admin') {
