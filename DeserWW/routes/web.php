@@ -21,6 +21,8 @@ use App\Http\Controllers\SeguroController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\CorredorController;
 use App\Http\Controllers\SponsorController;
+use App\Models\Corredor;
+
 //ADMIN
 
 Route::get('/mostrar-datos-en-vista', [CarreraController::class, 'mostrarDatosEnVista'])->name('mostrar-datos');
@@ -74,3 +76,16 @@ Route::post('/añadir-sponsor', [SponsorController::class, 'agregarSponsor'])->n
 Route::get('/editar-sponsor/{id}', [SponsorController::class, 'editarSponsor'])->name('editar-sponsor');
 
 Route::post('/editar-sponsor', [SponsorController::class, 'editarSponsors'])->name('actualizar-sponsor');
+
+// REGISTER
+// Ruta para mostrar el formulario de inicio de sesión
+Route::get('/register', [CorredorController::class, 'añadirCorredors'])->name('agregar-corredor');
+
+Route::post('/register', [CorredorController::class, 'agregarCorredor'])->name('guardar-corredor');
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+// Ruta para procesar el formulario de inicio de sesión
+Route::post('/register', [CorredorController::class, 'register'])->name('register');
