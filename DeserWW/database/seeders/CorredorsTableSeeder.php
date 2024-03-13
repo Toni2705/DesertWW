@@ -17,7 +17,7 @@ class CorredorsTableSeeder extends Seeder
             'dni' => '12345678Z',
             'nombre' => 'Juan',
             'apellidos' => 'Perez',
-            'contrasena' => bcrypt('contrasena123'),
+            'contrasena' => hash('sha256', 'user'),
             'direccion' => 'Calle Runner 1',
             'nacimiento' => '1990-01-01',
             'nivel' => 'PRO',
@@ -30,10 +30,10 @@ class CorredorsTableSeeder extends Seeder
         ]);
 
         DB::table('corredors')->insert([
-            'dni' => '12345678S',
+            'dni' => '54174256X',
             'nombre' => 'Sergi',
             'apellidos' => 'Alonso Alomar',
-            'contrasena' => bcrypt('user'),
+            'contrasena' => hash('sha256', 'user'),
             'direccion' => 'Calle Corredor 2',
             'nacimiento' => '1995-05-15',
             'nivel' => 'OPEN',
@@ -46,10 +46,10 @@ class CorredorsTableSeeder extends Seeder
         ]);
 
         DB::table('corredors')->insert([
-            'dni' => '12345678T',
+            'dni' => '53638890S',
             'nombre' => 'Toni',
             'apellidos' => 'Rubio',
-            'contrasena' => bcrypt('user'),
+            'contrasena' => hash('sha256', 'user'),
             'direccion' => 'Calle Atleta 3',
             'nacimiento' => '1988-09-20',
             'nivel' => 'PRO',
@@ -65,7 +65,7 @@ class CorredorsTableSeeder extends Seeder
             'dni' => '12345678D',
             'nombre' => 'Laura',
             'apellidos' => 'Gomez',
-            'contrasena' => bcrypt('contrasena123'),
+            'contrasena' => hash('sha256', 'user'),
             'direccion' => 'Calle Jogger 4',
             'nacimiento' => '1992-03-10',
             'nivel' => 'PRO',
@@ -81,7 +81,7 @@ class CorredorsTableSeeder extends Seeder
             'dni' => '12345678E',
             'nombre' => 'María',
             'apellidos' => 'López',
-            'contrasena' => bcrypt('contrasena123'),
+            'contrasena' => hash('sha256', 'user'),
             'direccion' => 'Calle Corredora 5',
             'nacimiento' => '1993-07-25',
             'nivel' => 'OPEN',
@@ -97,7 +97,7 @@ class CorredorsTableSeeder extends Seeder
             'dni' => '12345678A',
             'nombre' => 'Admin',
             'apellidos' => 'Admin',
-            'contrasena' => bcrypt('admin'),
+            'contrasena' => hash('sha256', 'admin'),
             'direccion' => 'Calle Corredora 5',
             'nacimiento' => '1993-07-25',
             'rol' => 'admin',
