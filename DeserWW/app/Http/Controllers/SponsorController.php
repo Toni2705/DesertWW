@@ -13,17 +13,17 @@ class SponsorController extends Controller
         $datos = Sponsor::obtenerTodosLosDatos();
 
         // Pasar los datos a la vista
-        return view('sponsorAdmin', ['datos' => $datos]);
+        return view('admin/sponsorAdmin', ['datos' => $datos]);
     }
     public function añadirSponsor()
     {
-        return view('SponsorAdd');
+        return view('admin/SponsorAdd');
     }
     public function editarSponsor($id)
     {
         $sponsor = Sponsor::findOrFail($id);
         // Pasar los datos de la carrera a la vista del formulario de edición
-        return view('editarSponsor', compact('sponsor'));
+        return view('admin/editarSponsor', compact('sponsor'));
     }
 
     public function editarSponsors(Request $request)

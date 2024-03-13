@@ -13,17 +13,17 @@ class SeguroController extends Controller
         $datos = Seguro::obtenerTodosLosDatos();
 
         // Pasar los datos a la vista
-        return view('segurosAdmin', ['datos' => $datos]);
+        return view('admin/segurosAdmin', ['datos' => $datos]);
     }
     public function añadirSeguros()
     {
-        return view('segurosAdd');
+        return view('admin/segurosAdd');
     }
     public function editarSeguro($id)
     {
         $seguro = Seguro::findOrFail($id);
         // Pasar los datos del segurp a la vista del formulario de edición
-        return view('editarSeguros', compact('seguro'));
+        return view('admin/editarSeguros', compact('seguro'));
     }
 
     public function editarSeguros(Request $request)

@@ -13,17 +13,17 @@ class CarreraController extends Controller
         $datos = Carrera::obtenerTodosLosDatos();
 
         // Pasar los datos a la vista
-        return view('carrerasAdmin', ['datos' => $datos]);
+        return view('admin/carrerasAdmin', ['datos' => $datos]);
     }
     public function añadirCarreras()
     {
-        return view('carrerasAdd');
+        return view('admin/carrerasAdd');
     }
     public function editarCarrera($id)
     {
         $carrera = Carrera::findOrFail($id);
         // Pasar los datos de la carrera a la vista del formulario de edición
-        return view('editarCarreras', compact('carrera'));
+        return view('admin/editarCarreras', compact('carrera'));
     }
 
     public function editarCarreras1(Request $request)
