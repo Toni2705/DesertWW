@@ -8,111 +8,134 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-        body {
+        .container-fluid {
+            background: url('/images/backgroundLogin.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 0;
             margin: 0;
         }
 
-        form {
-            max-width: 400px;
+        .register-box {
+            background-color: transparent;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 40vw;
             width: 100%;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
         }
 
-        form div {
-            margin-bottom: 15px;
+        .form-control {
+            background: transparent !important;
+            border-color: black;
+            color: black;
         }
 
-        form label {
-            font-weight: bold;
+        /* Estilos adicionales personalizados */
+        .form-group {
+            position: relative;
         }
 
-        form input[type="text"],
-        form input[type="number"],
-        form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+        .input-group-append {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+            /* Espacio entre el input y el ícono */
         }
 
-        form button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
+        .form-control:disabled {
+            background: transparent;
+        }
+
+        /* Cambiar cursor a 'not-allowed' al pasar el mouse sobre el campo deshabilitado */
+        #numero_federado:disabled:hover {
+            cursor: not-allowed;
+        }
+
+        /* Anular el cambio de fondo al hacer clic en los inputs */
+        .form-control:focus {
+            background: transparent !important;
+            border-color: black;
+            color: black;
+            box-shadow: none !important;
         }
     </style>
 </head>
 
 <body>
 
-    <form action="{{ route('register') }}" method="POST">
-        <h2>Registro de Corredores</h2>
+    <div class="container-fluid">
+        <div class="row justify-content-center register-box">
+            <div class="col-md-12 text-center mb-4">
+                <h2>Regístrate</h2>
+                <p>¿Ya tienes cuenta? <a href="/">Inicia sesión</a></p>
+            </div>
+            <div class="col-md-6">
+                <form action="{{ route('guardar-corredor') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="dni">DNI:</label>
+                        <input type="text" id="dni" name="dni" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellidos" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" required class="form-control">
+                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="nacimiento">Fecha de nacimiento:</label>
+                    <input type="date" id="nacimiento" name="nacimiento" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="nivel">Nivel:</label>
+                    <select name="nivel" id="nivel" class="form-control">
+                        <option value="OPEN" selected>OPEN</option>
+                        <option value="PRO">PRO</option>
+                    </select>
+                </div>
+                <div class="form-group" id="numero_federado_div">
+                    <label for="numero_federado">Número de federado (PRO):</label>
+                    <input type="text" id="numero_federado" name="numero_federado" class="form-control" disabled>
+                </div>
+            </div>
 
-        @csrf
-        <div>
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required>
+            <!-- Botón de envío -->
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+            <!-- Fin Botón de envío -->
+            </form>
         </div>
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-        </div>
-        <div>
-            <label for="apellidos">Apellidos:</label>
-            <input type="text" id="apellidos" name="apellidos" required>
-        </div>
-        <div>
-            <label for="contraseña">Contraseña:</label>
-            <input type="password" id="contraseña" name="contraseña" required>
-        </div>
-        <div>
-            <label for="direccion">Dirección:</label>
-            <input type="text" id="direccion" name="direccion" required>
-        </div>
-        <div>
-            <label for="nacimiento">Fecha nacimiento:</label>
-            <input type="date" id="nacimiento" name="nacimiento" required>
-        </div>
-        <div>
-            <label for="nivel">Nivel:</label>
-            <select name="nivel" id="nivel">
-                <option value="OPEN" selected>OPEN</option>
-                <option value="PRO">PRO</option>
-            </select>
-        </div>
-        <div id="numero_federado_div" style="display: none;">
-            <label for="numero_federado">Número de federado:</label>
-            <input type="text" id="numero_federado" name="numero_federado">
-        </div>
-        <div>
-            <label for="socio">Socio:</label>
-            <input type="checkbox" id="socio" name="socio" required>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Agregar Carrera</button>
-        </div>
-    </form>
+    </div>
 
     <script>
         $(document).ready(function() {
             $('#nivel').change(function() {
                 if ($(this).val() === 'PRO') {
-                    $('#numero_federado_div').show();
-                    $('#numero_federado').prop('required', true);
+                    $('#numero_federado').prop('disabled', false);
                 } else {
-                    $('#numero_federado_div').hide();
-                    $('#numero_federado').prop('required', false);
+                    $('#numero_federado').prop('disabled', true);
                 }
             });
         });

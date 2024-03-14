@@ -81,11 +81,8 @@ Route::post('/editar-sponsor', [SponsorController::class, 'editarSponsors'])->na
 // Ruta para mostrar el formulario de inicio de sesión
 Route::get('/register', [CorredorController::class, 'añadirCorredors'])->name('agregar-corredor');
 
-Route::post('/register', [CorredorController::class, 'agregarCorredor'])->name('guardar-corredor');
+Route::post('/register', [CorredorController::class, 'register'])->name('guardar-corredor');
 
 Route::get('/register', function () {
     return view('register');
 });
-
-// Ruta para procesar el formulario de inicio de sesión
-Route::post('/register', [CorredorController::class, 'register'])->name('register');

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .login-box {
             background-color: transparent;
             border-radius: 15px;
@@ -24,16 +26,19 @@
             max-width: 350px;
             width: 100%;
         }
+
         .form-control {
             background: transparent;
             border-color: black;
             color: black;
         }
+
         .form-control:focus {
             background-color: transparent;
             border-color: black;
             box-shadow: none;
         }
+
         .btn-login {
             background-color: black;
             color: white;
@@ -41,27 +46,31 @@
             margin-top: 2vh;
             border-radius: 20px;
         }
+
         .input-group-text {
             background-color: transparent;
             border-color: black;
             color: black;
         }
+
         .btn-login:hover {
             color: white;
             background-color: black;
         }
-        .register-link{
+
+        .register-link {
             text-align: center;
             margin-top: 4vh;
         }
     </style>
 </head>
+
 <body>
     <div class="wrapper">
         <div class="login-box">
             <h2 class="text-center mb-4">Login</h2>
             <form action="{{ route('login') }}" method="POST">
-            @csrf
+                @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">DNI</label>
                     <div class="input-group">
@@ -78,11 +87,12 @@
                 </div>
                 <button type="submit" class="btn btn-login">Login</button>
                 <div class="register-link">
-                    <p>Don't have an account? <a href="#">Register</a></p>
+                    <p>Don't have an account? <a href="/register">Register</a></p>
                 </div>
             </form>
         </div>
     </div>
     <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
 </body>
+
 </html>

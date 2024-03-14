@@ -12,7 +12,7 @@ class Corredor extends Model
     use HasFactory;
     // Define los atributos de la clase Carrera
     protected $fillable = [
-        'id', 'dni', 'nombre', 'apellidos', 'contraseña',
+        'id', 'dni', 'nombre', 'apellidos', 'contrasena',
         'direccion', 'nacimiento', 'nivel', 'socio',
         'numero_federado', 'id_seguro', 'rol'
     ];
@@ -38,4 +38,24 @@ class Corredor extends Model
         }
     }
 }
+    public static function registrarCorredor($datos)
+    {
+        // Crear una nueva instancia de Corredor con los datos proporcionados
+        $nuevoCorredor = new Corredor();
+        $nuevoCorredor->dni = $datos['dni'];
+        $nuevoCorredor->nombre = $datos['nombre'];
+        $nuevoCorredor->apellidos = $datos['apellidos'];
+        $nuevoCorredor->contrasena = $datos['contrasena'];
+        $nuevoCorredor->direccion = $datos['direccion'];
+        $nuevoCorredor->nacimiento = $datos['nacimiento'];
+        $nuevoCorredor->nivel = $datos['nivel'];
+        $nuevoCorredor->socio = true;
+        $nuevoCorredor->numero_federado = $datos['numero_federado'];
+        $nuevoCorredor->rol = 'usuario';
+
+        // Guardar el nuevo usuario en la base de datos
+        $nuevoCorredor->save();
+        // Retornar la carrera recién creada
+        return $nuevoCorredor;
+    }
 }

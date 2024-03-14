@@ -41,4 +41,34 @@ class CorredorController extends Controller
             return redirect(url('/'));
         }
     }
+    
+    public function añadirCorredor()
+    {
+        return view('register');
+    }
+
+    public function register(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'dni' => 'required',
+            'nombre' => 'required',
+            'apellidos' => 'required',
+            'contrasena' => 'required',
+            'direccion' => 'required',
+            'nacimiento' => 'required',
+            'nivel' => 'required',
+            'numero_federado' => ($request->nivel === 'PRO') ? 'required' : '',
+        ]);
+
+        // Obtener los datos del formulario
+        $datos = $request->all();
+
+        // Llamar a la función del modelo para agregar un nuevo corredor
+        $nuevoCorredor = Corredor::registrarCorredor($datos);
+
+        // Redireccionar a alguna ruta después de agregar el corredor
+        return redirect('/menuprincipal')->with('success', 'El corredor se agregó correctamente.');
+    }
+
 }
