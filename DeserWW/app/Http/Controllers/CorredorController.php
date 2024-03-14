@@ -13,7 +13,7 @@ class CorredorController extends Controller
         $datos = Corredor::obtenerTodosLosDatos();
 
         // Pasar los datos a la vista
-        return view('corredoresAdmin', ['datos' => $datos]);
+        return view('admin/corredoresAdmin', ['datos' => $datos]);
     }
     public function login(Request $request)
     {
@@ -44,7 +44,7 @@ class CorredorController extends Controller
     
     public function añadirCorredor()
     {
-        return view('register');
+        return view('admin/register');
     }
 
     public function register(Request $request)
