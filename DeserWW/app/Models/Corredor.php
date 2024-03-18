@@ -45,12 +45,12 @@ class Corredor extends Model
         $nuevoCorredor->dni = $datos['dni'];
         $nuevoCorredor->nombre = $datos['nombre'];
         $nuevoCorredor->apellidos = $datos['apellidos'];
-        $nuevoCorredor->contrasena = $datos['contrasena'];
+        $nuevoCorredor->contrasena = hash('sha256', $datos['contrasena']);
         $nuevoCorredor->direccion = $datos['direccion'];
         $nuevoCorredor->nacimiento = $datos['nacimiento'];
         $nuevoCorredor->nivel = $datos['nivel'];
         $nuevoCorredor->socio = true;
-        $nuevoCorredor->numero_federado = $datos['numero_federado'];
+        $nuevoCorredor->numero_federado = isset($datos['numero_federado']) ? $datos['numero_federado'] : '';
         $nuevoCorredor->rol = 'usuario';
 
         // Guardar el nuevo usuario en la base de datos
