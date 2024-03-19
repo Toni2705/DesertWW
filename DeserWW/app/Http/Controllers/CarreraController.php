@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -19,10 +20,12 @@ class CarreraController extends Controller
         $datos = Carrera::where('fecha_inicio', '>=', Carbon::today())
         ->orderBy('fecha_inicio', 'asc')
         ->get();
+        $sponsors = Sponsor::sponsorsPrincipales();
         // Pasar los datos a la vista
         return view('principal/menuprincipal', [
             'proximaCarrera' => $proximaCarrera,
-            'datos' => $datos
+            'datos' => $datos,
+            'sponsors'=> $sponsors
         ]);
     }
     public function mostrarDatosEnVista()

@@ -21,6 +21,15 @@ class Sponsor extends Model
             // Devolver los datos obtenidos
             return $datos;
         }
+        public static function sponsorsPrincipales()
+        {
+            // Obtener los sponsors con campo principal igual a 1
+            $datos = Sponsor::where('principal', true)->get();
+
+            // Devolver los datos obtenidos
+            return $datos;
+        }
+
 
         public static function editarDatos($datos)
         {

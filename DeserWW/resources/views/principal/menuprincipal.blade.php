@@ -91,5 +91,21 @@
     </div>
 </div>
 
+<!-- AQUI VA A IR EL FOOTER Y LOS SPONSORS QUE SON PRINCIPALES (SU LOGO) -->
+
+<!-- <div class="container">
+    <div class="row justify-content-center">
+        @foreach($sponsors as $sponsor)        
+            <div class="col-md-3 mb-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        {{ $sponsor->nombre }}
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div> -->
+
 </body>
 </html>
