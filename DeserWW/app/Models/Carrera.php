@@ -21,8 +21,7 @@ class Carrera extends Model
         public static function obtenerTodosLosDatos()
         {
             // Obtener todos los datos de la tabla utilizando Eloquent
-            $datos = Carrera::all();
-
+            $datos = Carrera::orderBy('fecha_inicio', 'asc')->get();
             // Devolver los datos obtenidos
             return $datos;
         }

@@ -23,6 +23,13 @@
         #countdown{
             font-size: 18px;
         }
+        .container{
+            margin-top: 20px;
+            text-align: center;
+        }
+        .card{
+            color: white;
+        }
     </style>
 </head>
 <body>   
@@ -34,7 +41,6 @@
                 <h5 ><img src="{{ asset('images/flag.png') }}" alt="Bandera de Carreras" id="carrera"> {{ $proximaCarrera->nombre }}</h5>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end" id="countdown"></div>
-            
         </div>
         <script>
                 // Obtenemos la fecha de inicio de la próxima carrera
@@ -69,6 +75,21 @@
     @else
         <p>No hay próximas carreras programadas.</p>
     @endif
+
 </div>
+<div class="container">
+    <div class="row justify-content-center">
+        @for($i = 0; $i < count($datos) && $i < 4; $i++)
+        <div class="col-md-3 mb-4">
+            <div class="card bg-dark">
+                <div class="card-body">
+                    {{ $datos[$i]->nombre }}
+                </div>
+            </div>
+        </div>
+        @endfor
+    </div>
+</div>
+
 </body>
 </html>
