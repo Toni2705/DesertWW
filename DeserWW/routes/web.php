@@ -38,14 +38,15 @@ Route::post('/agregar-carrera', [CarreraController::class, 'agregarCarrera'])->n
 // CORREDORES
 Route::get('/mostrar-corredores', [CorredorController::class, 'mostrarDatosEnVista'])->name('mostrar-corredores');
 // Ruta para mostrar el formulario de inicio de sesión
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('admin/loginAdmin');
 });
 
 // Ruta para procesar el formulario de inicio de sesión
-Route::post('/', [CorredorController::class, 'login'])->name('login');
+Route::post('/login', [CorredorController::class, 'login'])->name('login');
 
 // Ruta para el menú principal
+Route::get('/', [CarreraController::class, 'mostrarMenuPrincipal']);
 Route::get('/menuprincipal', function () {
     return view('principal/menuprincipal');
 })->name('menuprincipal');

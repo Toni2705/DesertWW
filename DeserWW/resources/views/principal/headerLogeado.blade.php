@@ -2,7 +2,7 @@
 <header>
         <div id="header" class="d-flex align-items-center justify-content-between px-3 py-2 bg-dark">
             <img src="{{ asset('images/logo.png') }}" alt="Icono" class="me-3">
-            <h5>Desert WorldWide</h5>
+            <h4>Desert WorldWide</h4>
             <div class="text-right"> <!-- Centra los elementos internos -->
                 <a href="principal/carreras"><p>¡Próximas Competiciones!</p></a>
                 <a href="principal/perfil"><svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"width="40"height="40"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><circle cx="12" cy="7" r="4" /><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" /></svg></a>
@@ -36,7 +36,7 @@
             color: inherit; /* Hereda el color del texto del encabezado */
             text-decoration: none; /* Elimina la subrayado de los enlaces */
         }
-        #header h5{
+        #header h4{
             margin: 0;
         }
         #header p:hover{

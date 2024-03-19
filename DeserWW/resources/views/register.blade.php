@@ -76,7 +76,7 @@
         <div class="row justify-content-center register-box">
             <div class="col-md-12 text-center mb-4">
                 <h2>Regístrate</h2>
-                <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+                <p>¿Ya tienes cuenta? <a href="/">Inicia sesión</a></p>
             </div>
             <div class="col-md-6">
                 <form action="{{ route('guardar-corredor') }}" method="POST">

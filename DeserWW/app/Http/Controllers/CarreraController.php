@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class CarreraController extends Controller
 {
+    public function mostrarMenuPrincipal()
+    {
+        // Obtener la próxima carrera
+        $proximaCarrera = Carrera::where('fecha_inicio', '>', Carbon::now())
+                                  ->orderBy('fecha_inicio', 'asc')
+                                  ->first();
+
+        // Pasar los datos a la vista
+        return view('principal/menuprincipal', ['proximaCarrera' => $proximaCarrera]);
+    }
     public function mostrarDatosEnVista()
     {
         // Llamar a la función del modelo para obtener los datos
