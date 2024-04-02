@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +44,14 @@
         }
     </style>
 </head>
-<body>   
-@include('principal/headerPrincipal')
+<body>
+    
+@if (Auth::check())
+    @include('principal/headerLogeado')
+@else
+    @include('principal/headerPrincipal')
+@endif
+
 <div class="next-race-container">
     @if ($proximaCarrera)
         <div class="row">

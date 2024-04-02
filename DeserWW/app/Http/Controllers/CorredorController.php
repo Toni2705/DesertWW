@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Corredor;
 use Illuminate\Http\Request;
 
@@ -28,6 +28,7 @@ class CorredorController extends Controller
 
         // Verificar si se encontró un usuario
         if ($usuario) {
+            Auth::login($usuario);
             // Verificar el rol del usuario
             if ($usuario->rol === 'admin') {
                 return redirect(url('/menuadmin'));
