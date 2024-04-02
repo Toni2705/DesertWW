@@ -38,7 +38,7 @@ class CorredorController extends Controller
         } else {
 
             // Usuario no autenticado, redirigir de nuevo al formulario de inicio de sesión con un mensaje de error
-            return redirect(url('/'));
+            return redirect(url('/login'));
         }
     }
     
