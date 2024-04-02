@@ -33,7 +33,7 @@ class CorredorController extends Controller
                 return redirect(url('/menuadmin'));
             } else {
                 // Redireccionar al menú principal si el usuario no es un admin
-                return redirect(url('/menuprincipal'));
+                return redirect()->route('mostrarMenuPrincipal');
             }
         } else {
 

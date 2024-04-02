@@ -46,7 +46,7 @@ Route::get('/login', function () {
 Route::post('/login', [CorredorController::class, 'login'])->name('login');
 
 // Ruta para el menú principal
-Route::get('/', [CarreraController::class, 'mostrarMenuPrincipal']);
+Route::get('/', [CarreraController::class, 'mostrarMenuPrincipal'])->name('mostrarMenuPrincipal');
 Route::get('/menuprincipal', function () {
     return view('principal/menuprincipal');
 })->name('menuprincipal');

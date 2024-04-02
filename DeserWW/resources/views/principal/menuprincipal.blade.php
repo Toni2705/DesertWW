@@ -30,6 +30,15 @@
         .card{
             color: white;
         }
+        .imgCartel{
+        width: 270px;
+        height: 450px;
+        padding-top: 15px;
+        }
+        .card-body{
+            width: 300px;
+            height: 500px;
+        }
     </style>
 </head>
 <body>   
@@ -84,6 +93,7 @@
             <div class="card bg-dark">
                 <div class="card-body">
                     {{ $datos[$i]->nombre }}
+                    <img src="{{ asset($datos[$i]->cartel) }}" alt="Cartel de {{ $datos[$i]->nombre }}" class="imgCartel">
                 </div>
             </div>
         </div>
