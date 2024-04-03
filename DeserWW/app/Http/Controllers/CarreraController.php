@@ -6,6 +6,7 @@ use App\Models\Carrera;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Symfony\Component\VarDumper\VarDumper;
 
 class CarreraController extends Controller
 {
@@ -92,5 +93,23 @@ class CarreraController extends Controller
 
         // Redireccionar a alguna ruta después de agregar la carrera
         return redirect()->route('mostrar-datos')->with('success', 'La carrera se agregó correctamente.');
+    }
+
+    public function verCarreras(){
+        // Obtener la próxima carrera
+        $proximaCarrera = Carrera::where('fecha_inicio', '>', Carbon::now())
+            ->orderBy('fecha_inicio', 'asc')
+            ->first();
+        // Obtener todas las carreras que comienzan en o después de la fecha actual
+        $datos = Carrera::where('fecha_inicio', '>=', Carbon::today())
+            ->orderBy('fecha_inicio', 'asc')
+            ->get();
+        $sponsors = Sponsor::sponsorsPrincipales();
+        // Pasar los datos a la vista
+        return view('principal/carreras', [
+            'proximaCarrera' => $proximaCarrera,
+            'datos' => $datos,
+            'sponsors' => $sponsors
+        ]);
     }
 }

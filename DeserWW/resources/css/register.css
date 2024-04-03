@@ -1,0 +1,75 @@
+.container-fluid {
+    background: url('/images/backgroundLogin.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.register-box {
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 40vw;
+    width: 100%;
+}
+
+.form-control {
+    background: transparent !important;
+    border-color: black;
+    color: black;
+}
+
+/* Estilos adicionales personalizados */
+.form-group {
+    position: relative;
+}
+
+.input-group-append {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    /* Espacio entre el input y el ícono */
+}
+
+.form-control:disabled {
+    background: transparent;
+}
+
+/* Cambiar cursor a 'not-allowed' al pasar el mouse sobre el campo deshabilitado */
+#numero_federado:disabled:hover {
+    cursor: not-allowed;
+}
+
+/* Anular el cambio de fondo al hacer clic en los inputs */
+.form-control:focus {
+    background: transparent !important;
+    border-color: black;
+    color: black;
+    box-shadow: none !important;
+}
+
+/* Estilos para los mensajes de error */
+.error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.is-invalid {
+    border-color: red !important;
+}
+
+.dni-error {
+    text-align: end;
+}

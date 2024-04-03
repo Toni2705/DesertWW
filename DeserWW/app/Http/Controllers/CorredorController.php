@@ -22,7 +22,7 @@ class CorredorController extends Controller
             'dni' => 'required',
             'password' => 'required',
         ]);
-        $hassed = hash('sha256',$request->password);
+        $hassed = hash('sha256', $request->password);
         // Llamar a la función del modelo para buscar al usuario
         $usuario = Corredor::buscarUsuario($request->dni, $hassed);
 
@@ -41,7 +41,7 @@ class CorredorController extends Controller
             return redirect(url('/login'));
         }
     }
-    
+
     public function añadirCorredor()
     {
         return view('admin/register');
@@ -64,11 +64,13 @@ class CorredorController extends Controller
         // Obtener los datos del formulario
         $datos = $request->all();
 
+        var_dump($datos);
+
         // Llamar a la función del modelo para agregar un nuevo corredor
         $nuevoCorredor = Corredor::registrarCorredor($datos);
 
         // Redireccionar a alguna ruta después de agregar el corredor
-        return redirect('/menuprincipal')->with('success', 'El corredor se agregó correctamente.');
+        // return redirect('/menuprincipal')->with('success', 'El corredor se agregó correctamente.');
+        return redirect()->route('mostrarMenuPrincipal');
     }
-
 }
