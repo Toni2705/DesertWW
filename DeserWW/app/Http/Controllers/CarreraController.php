@@ -28,6 +28,20 @@ class CarreraController extends Controller
             'sponsors'=> $sponsors
         ]);
     }
+    public function carreraInfo($id)
+    {
+        // Buscar la carrera por su ID
+        $carrera = Carrera::find($id);
+
+        // Verificar si se encontró la carrera
+        if ($carrera) {
+            // Retornar la vista con los datos de la carrera
+            return view('principal/carreraInfo', ['carrera' => $carrera]);
+        } else {
+            // Retornar una respuesta en caso de que la carrera no se encuentre
+            return response()->json(['message' => 'Carrera no encontrada'], 404);
+        }
+    }
     public function mostrarDatosEnVista()
     {
         // Llamar a la función del modelo para obtener los datos

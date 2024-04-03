@@ -100,10 +100,10 @@ use Illuminate\Support\Facades\Auth;
         @for($i = 0; $i < count($datos) && $i < 4; $i++)
         <div class="col-md-3 mb-4">
             <div class="card bg-dark">
-                <div class="card-body">
+                <a href="{{ route('carrera-info', ['id' => $datos[$i]->id]) }}"><div class="card-body">
                     {{ $datos[$i]->nombre }}
                     <img src="{{ asset($datos[$i]->cartel) }}" alt="Cartel de {{ $datos[$i]->nombre }}" class="imgCartel">
-                </div>
+                </div></a>
             </div>
         </div>
         @endfor
