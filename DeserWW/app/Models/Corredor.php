@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 
 
-class Corredor extends Model
+class Corredor extends Model implements AuthenticatableContract
 {
+    use Authenticatable;
     use HasFactory;
     // Define los atributos de la clase Carrera
     protected $fillable = [

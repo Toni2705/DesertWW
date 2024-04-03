@@ -35,6 +35,8 @@ Route::get('/agregar-carrera', [CarreraController::class, 'añadirCarreras'])->n
 
 Route::post('/agregar-carrera', [CarreraController::class, 'agregarCarrera'])->name('guardar-carrera');
 
+Route::get('/carrera/{id}', [CarreraController::class, 'carreraInfo'])->name('carrera-info');
+
 // CORREDORES
 Route::get('/mostrar-corredores', [CorredorController::class, 'mostrarDatosEnVista'])->name('mostrar-corredores');
 // Ruta para mostrar el formulario de inicio de sesión
