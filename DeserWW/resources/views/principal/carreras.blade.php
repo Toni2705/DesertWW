@@ -7,7 +7,7 @@
     <title>DesertWW</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .next-race-container {
+        .tittle {
             background-color: rgba(255, 165, 0, 0.7);
             /* Fondo naranja transparente */
             color: black;
@@ -55,14 +55,59 @@
 </head>
 
 <body>
-    @include('principal/headerPrincipal')
-    @if ($datos)
-    <?php
-    var_dump($datos);
-    ?>
+
+    @if (Auth::check())
+    @include('principal/headerLogeado')
     @else
-    <p>No hay próximas carreras programadas.</p>
+    @include('principal/headerPrincipal')
     @endif
+
+    <div class="tittle d-flex align-items-center justify-content-center">
+        <h5>Nuestras Carreras</h5>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            @foreach($datos as $carrera)
+            <!-- Comprobar si la carrera ha pasado -->
+            @php
+            $fechaInicio = \Carbon\Carbon::parse($carrera->fecha_inicio);
+            $hoy = \Carbon\Carbon::today();
+            $colorTitulo = '';
+            if ($fechaInicio->lt($hoy)) {
+            $colorTitulo = 'text-danger'; // Carrera pasada
+            }
+            @endphp
+            <div class="col-md-3 mb-4">
+                <div class="card bg-dark">
+                    <a href="{{ route('carrera-info', ['id' => $carrera->id]) }}" class="{{ $colorTitulo }}">
+                        <div class="card-body">
+                            {{ $carrera->nombre }}
+                            <img src="{{ asset($carrera->cartel) }}" alt="Cartel de {{ $carrera->nombre }}" class="imgCartel">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    
+    <!-- AQUI VA A IR EL FOOTER Y LOS SPONSORS QUE SON PRINCIPALES (SU LOGO) -->
+
+    <!-- <div class="container">
+    <div class="row justify-content-center">
+        @foreach($sponsors as $sponsor)        
+            <div class="col-md-3 mb-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        {{ $sponsor->nombre }}
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div> -->
+
 </body>
 
 </html>
