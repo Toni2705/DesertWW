@@ -42,6 +42,10 @@ use Illuminate\Support\Facades\Auth;
             width: 300px;
             height: 500px;
         }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
     </style>
 </head>
 <body>
