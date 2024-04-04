@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\Seguro;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -36,8 +37,9 @@ class CarreraController extends Controller
 
         // Verificar si se encontró la carrera
         if ($carrera) {
+            $seguros = Seguro::obtenerTodosLosDatos();
             // Retornar la vista con los datos de la carrera
-            return view('principal/carreraInfo', ['carrera' => $carrera]);
+            return view('principal/carreraInfo', ['carrera' => $carrera],['seguros'=> $seguros]);
         } else {
             // Retornar una respuesta en caso de que la carrera no se encuentre
             return response()->json(['message' => 'Carrera no encontrada'], 404);

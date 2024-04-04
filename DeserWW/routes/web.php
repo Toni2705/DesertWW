@@ -21,6 +21,8 @@ use App\Http\Controllers\SeguroController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\CorredorController;
 use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\DorsalController;
+
 use App\Models\Corredor;
 
 //ADMIN
@@ -98,3 +100,7 @@ Route::post('/register', [CorredorController::class, 'register'])->name('guardar
 Route::get('/register', function () {
     return view('register');
 });
+
+//DORSALES
+
+Route::post('/inscribirse', [DorsalController::class, 'inscribirse'])->name('inscribirse');
