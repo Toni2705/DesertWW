@@ -4,7 +4,7 @@
             <img src="{{ asset('images/logo.png') }}" alt="Icono" class="me-3">
             <h4>Desert WorldWide</h4>
             <div class="text-right"> <!-- Centra los elementos internos -->
-                <a href="principal/carreras"><p>¡Próximas Competiciones!</p></a>
+                <a href="principal/carreras"><p>¡Todas las competiciones!</p></a>
                 <a href="/register"><p>¡Hazte Socio!</p></a>
             </div>
            

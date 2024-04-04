@@ -4,8 +4,12 @@
             <img src="{{ asset('images/logo.png') }}" alt="Icono" class="me-3">
             <h4>Desert WorldWide</h4>
             <div class="text-right"> <!-- Centra los elementos internos -->
-                <a href="principal/carreras"><p>¡Próximas Competiciones!</p></a>
-                <a href="principal/perfil"><svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"width="40"height="40"fill="none"stroke="currentColor"stroke-width="2"stroke-linecap="round"stroke-linejoin="round"><circle cx="12" cy="7" r="4" /><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" /></svg></a>
+                <a href="principal/mis-carreras"><p>Mis carreras</p></a>
+                <a href="principal/carreras"><p>¡Todas las competiciones!</p></a>
+                <div class="profile-dropdown">
+                    <a href="principal/perfil"><span>Perfil</span></a>
+                    <a href="{{ route('logout') }}"><span>Cerrar sesión</span></a>
+                </div>
             </div>
            
         </div>
@@ -44,4 +48,33 @@
             border-radius: 5px; /* Bordes redondeados */
             color: black;
         }
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .profile-dropdown a:hover {
+            background-color: orange;
+            border-radius: 5px; /* Bordes redondeados */
+            color: black;
+        }
+        .profile-dropdown a:hover span{
+            background-color: orange;
+            border-radius: 5px; /* Bordes redondeados */
+            color: black;
+        }
+
+        .profile-dropdown a:last-child {
+            border-top: 1px solid #ddd;
+        }
+
 </style>

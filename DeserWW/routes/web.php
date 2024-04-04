@@ -27,6 +27,9 @@ use App\Models\Corredor;
 
 //ADMIN
 
+Route::get('/logout',  [CorredorController::class, 'logout'])->name('logout');
+
+
 Route::get('/mostrar-datos-en-vista', [CarreraController::class, 'mostrarDatosEnVista'])->name('mostrar-datos');
 
 Route::post('/editar-carreras', [CarreraController::class, 'editarCarreras1'])->name('editar-carreras');

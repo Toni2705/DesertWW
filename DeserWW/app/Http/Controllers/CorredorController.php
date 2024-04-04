@@ -74,4 +74,9 @@ class CorredorController extends Controller
         // return redirect('/menuprincipal')->with('success', 'El corredor se agregó correctamente.');
         return redirect()->route('mostrarMenuPrincipal');
     }
+    public function logout()
+    {
+         Auth::logout();
+         return redirect()->route('mostrarMenuPrincipal');
+    }
 }
