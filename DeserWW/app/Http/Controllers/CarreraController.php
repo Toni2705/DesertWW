@@ -11,23 +11,23 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class CarreraController extends Controller
 {
-    
+
     public function mostrarMenuPrincipal()
     {
         // Obtener la próxima carrera
         $proximaCarrera = Carrera::where('fecha_inicio', '>', Carbon::now())
-                                  ->orderBy('fecha_inicio', 'asc')
-                                  ->first();
+            ->orderBy('fecha_inicio', 'asc')
+            ->first();
         // Obtener todas las carreras que comienzan en o después de la fecha actual
         $datos = Carrera::where('fecha_inicio', '>=', Carbon::today())
-        ->orderBy('fecha_inicio', 'asc')
-        ->get();
+            ->orderBy('fecha_inicio', 'asc')
+            ->get();
         $sponsors = Sponsor::sponsorsPrincipales();
         // Pasar los datos a la vista
         return view('principal/menuprincipal', [
             'proximaCarrera' => $proximaCarrera,
             'datos' => $datos,
-            'sponsors'=> $sponsors
+            'sponsors' => $sponsors
         ]);
     }
     public function carreraInfo($id)
@@ -68,10 +68,10 @@ class CarreraController extends Controller
     {
         // Obtener los datos del formulario
         $datos = $request->all();
-    
+
         // Llamar a la función del modelo para editar los datos
         $exito = Carrera::editarDatos($datos);
-    
+
         if ($exito) {
             // La edición fue exitosa, redirigir a alguna parte
             return redirect()->route('mostrar-datos')->with('success', 'Los datos de la carrera se actualizaron correctamente.');
@@ -112,20 +112,14 @@ class CarreraController extends Controller
     }
 
     public function verCarreras(){
-        // Obtener la próxima carrera
-        $proximaCarrera = Carrera::where('fecha_inicio', '>', Carbon::now())
-            ->orderBy('fecha_inicio', 'asc')
-            ->first();
         // Obtener todas las carreras que comienzan en o después de la fecha actual
-        $datos = Carrera::where('fecha_inicio', '>=', Carbon::today())
-            ->orderBy('fecha_inicio', 'asc')
-            ->get();
+        $datos = Carrera::orderBy('fecha_inicio', 'asc')->get();
         $sponsors = Sponsor::sponsorsPrincipales();
         // Pasar los datos a la vista
         return view('principal/carreras', [
-            'proximaCarrera' => $proximaCarrera,
             'datos' => $datos,
             'sponsors' => $sponsors
         ]);
+
     }
 }

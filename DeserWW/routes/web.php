@@ -62,12 +62,8 @@ Route::get('/menuadmin', function () {
 
 // Ruta para ver las carreras
 Route::get('principal/carreras', [CarreraController::class, 'verCarreras'])->name('ver-carreras');
-
 // se usara para ver cual se ha seleccionado y poder ver sus detalles
 // Route::post('principal/carreras', [CarreraController::class, 'verCarreras'])->name('ver-carreras');
-Route::get('principal/carreras', function () {
-    return view('principal/carreras');
-})->name('carreras');
 
 // SEGUROS
 Route::get('/mostrar-seguros', [SeguroController::class, 'mostrarDatosEnVista'])->name('mostrar-seguros');
