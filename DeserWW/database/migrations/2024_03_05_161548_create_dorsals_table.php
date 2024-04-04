@@ -15,14 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_corredor');
             $table->unsignedBigInteger('id_carrera');
+            $table->unsignedBigInteger('id_seguro');
             $table->string('qr');
-            $table->string('dorsal'); // Nuevo campo 'dorsal'
-            // Otras columnas que puedas necesitar
+            $table->string('dorsal');
             $table->timestamps();
 
             // Claves foráneas
             $table->foreign('id_corredor')->references('id')->on('corredors');
             $table->foreign('id_carrera')->references('id')->on('carreras');
+            $table->foreign('id_seguro')->references('id')->on('seguros');
         });
     }
 

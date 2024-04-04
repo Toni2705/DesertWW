@@ -22,12 +22,8 @@ return new class extends Migration
             $table->enum('nivel', ['PRO', 'OPEN'])->nullable();
             $table->boolean('socio')->nullable();
             $table->string('numero_federado')->nullable();
-            $table->unsignedBigInteger('id_seguro')->nullable();
             $table->enum('rol', ['usuario', 'admin']);
             $table->timestamps();
-
-            // Claves foráneas
-            $table->foreign('id_seguro')->references('id')->on('seguros')->nullable();
         });
     }
 
