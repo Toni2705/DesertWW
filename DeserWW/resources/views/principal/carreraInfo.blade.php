@@ -13,6 +13,8 @@ $idCorredor = Auth::id();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $carrera->nombre }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=Afb7Pf6VOC-Xum8-A3sLFZ37rBBWd-aaQ6dlld30-_IQDxXejIuA3lVcXicaLrPYkJZQ0KIHHeYekAGy&currency=EUR"></script>
+
 </head>
 <style>
     .imgCartel {
@@ -74,9 +76,14 @@ $idCorredor = Auth::id();
                             @endfor
                     </select>
                 </div>
-                <button type="submit" class="btn btn-success">Inscribirse</button>
             </form>
-        <?php
+            <input type="hidden" id="precioInscripcion" value="{{ $carrera->precio_inscripcion }}">
+            <script src="{{ asset('js/paypal.js') }}"></script>
+
+            <div id="paypal-button-container" style="display: none;"></div>
+
+
+            <?php
             // var_dump('SII PUEDES INSCRIBIRTE, QUEDAN MÁS DE 10 DIAS PARA QUE EMPIECE LA CARRERA');
             // echo '<br>';
             // echo $carrera->fecha_inicio;
@@ -93,6 +100,7 @@ $idCorredor = Auth::id();
         // Evento para mostrar el formulario al hacer clic en el botón "Inscribirse"
         document.getElementById("mostrarFormulario").addEventListener("click", function() {
             document.getElementById("formularioInscripcion").style.display = "block";
+            document.getElementById("paypal-button-container").style.display = "block";
         });
     </script>
 
