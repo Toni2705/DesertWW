@@ -41,6 +41,25 @@ class Corredor extends Model implements AuthenticatableContract
         }
     }
 }
+    public static function insertarCorredor($dni, $nombre, $apellidos, $direccion, $nacimiento, $nivel, $numero_federado){
+        // Crear una nueva instancia de Corredor con los datos proporcionados
+        $nuevoCorredor = new Corredor();
+        $nuevoCorredor->dni = $dni;
+        $nuevoCorredor->nombre = $nombre;
+        $nuevoCorredor->apellidos = $apellidos;
+        $nuevoCorredor->direccion = $direccion;
+        $nuevoCorredor->contrasena = 'invitado';
+        $nuevoCorredor->nacimiento = $nacimiento;
+        $nuevoCorredor->nivel = $nivel;
+        $nuevoCorredor->socio = false;
+        $nuevoCorredor->numero_federado = $numero_federado != '' ? $numero_federado : '';
+        $nuevoCorredor->rol = 'usuario';
+
+        // Guardar el nuevo usuario en la base de datos
+        $nuevoCorredor->save();
+        // Retornar el corredor recien creado
+        return $nuevoCorredor;
+    }
     public static function registrarCorredor($datos)
     {
         // Crear una nueva instancia de Corredor con los datos proporcionados
@@ -58,7 +77,7 @@ class Corredor extends Model implements AuthenticatableContract
 
         // Guardar el nuevo usuario en la base de datos
         $nuevoCorredor->save();
-        // Retornar la carrera recién creada
+        // Retornar el corredor recien creado
         return $nuevoCorredor;
     }
 }

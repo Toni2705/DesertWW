@@ -103,3 +103,9 @@ Route::get('/register', function () {
 //DORSALES
 
 Route::post('/inscribirse', [DorsalController::class, 'inscribirse'])->name('inscribirse');
+
+// Drag & Drop
+Route::get('/comprobacion', function () {
+    return view('principal/comprobacion');
+})->name('comprobacion');
+Route::post('/comprobacion', [DorsalController::class, 'comprobacion'])->name('comprobacionPost');

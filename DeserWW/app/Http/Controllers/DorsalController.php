@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dorsal;
+use App\Models\Corredor;
 use Illuminate\Http\Request;
 
 class DorsalController extends Controller
@@ -35,14 +36,9 @@ class DorsalController extends Controller
             
             return redirect()->back()->with('success', 'Te has inscrito correctamente.');
         } else {
-            //TEMPORAL ESE ALERT
-            ?>
-            <script>
-                alert("Debes iniciar sesion para poder inscribirte");
-            </script>
-            <?php
-            // Usuario no autenticado, redirigirlo al formulario de inicio de sesión
-            return view('admin/loginAdmin');
+            // Primero tenemos que insertar el usuario y luego hacer el insert en la tabla dorsales.
+            $invitado = Corredor::insertarCorredor($request->input('dni'), $request->input('nombre'), $request->input('apellidos'),$request->input('direccion'), $request->input('nacimiento'), $request->input('nivel'), $request->input('numero_federado'), $request->input('seguro'));
+            // var_dump($request->input('dni'));
         }
     }
 }
