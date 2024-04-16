@@ -14,6 +14,8 @@ $idCorredor = Auth::id();
     <title>{{ $carrera->nombre }}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=Afb7Pf6VOC-Xum8-A3sLFZ37rBBWd-aaQ6dlld30-_IQDxXejIuA3lVcXicaLrPYkJZQ0KIHHeYekAGy&currency=EUR"></script>
+
 </head>
 <style>
     .imgCartel {
@@ -122,11 +124,25 @@ $idCorredor = Auth::id();
                             @endfor
                     </select>
                 </div>
+<<<<<<< HEAD
                 <button type="submit" class="btn btn-success">Verifica si eres humano!</button>
             </form>
             <?php
         } elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
             echo 'No es posible inscribirse a esta carrera, faltan menos de 10 dias para que comience.';
+=======
+            </form>
+            <input type="hidden" id="precioInscripcion" value="{{ $carrera->precio_inscripcion }}">
+            <script src="{{ asset('js/paypal.js') }}"></script>
+
+            <div id="paypal-button-container" style="display: none;"></div>
+
+
+            <?php
+            // var_dump('SII PUEDES INSCRIBIRTE, QUEDAN MÁS DE 10 DIAS PARA QUE EMPIECE LA CARRERA');
+            // echo '<br>';
+            // echo $carrera->fecha_inicio;
+>>>>>>> bc2dc39ad24fba76ffef03011750f01e7cc4e3bd
         } else {
             echo 'No es posible inscribirse a esta carrera, ya ha finalizado.';
         }
@@ -136,6 +152,7 @@ $idCorredor = Auth::id();
 
     <script>
         // Evento para mostrar el formulario al hacer clic en el botón "Inscribirse"
+<<<<<<< HEAD
         $(document).ready(function() {
             // Agregar un evento de clic al botón de inscribirse
             // $('#formularioInscripcion').submit(function(event) {
@@ -236,6 +253,11 @@ $idCorredor = Auth::id();
                 actualizarEstadoBotonRegistro();
             });
 
+=======
+        document.getElementById("mostrarFormulario").addEventListener("click", function() {
+            document.getElementById("formularioInscripcion").style.display = "block";
+            document.getElementById("paypal-button-container").style.display = "block";
+>>>>>>> bc2dc39ad24fba76ffef03011750f01e7cc4e3bd
         });
     </script>
 
