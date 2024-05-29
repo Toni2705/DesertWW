@@ -1,7 +1,8 @@
 <body>
 <header>
         <div id="header" class="d-flex align-items-center justify-content-between px-3 py-2 bg-dark">
-            <img src="{{ asset('images/logo.png') }}" alt="Icono" class="me-3">
+            <a href="{{ route('mostrarMenuPrincipal')}}
+            "><img src="{{ asset('images/logo.png') }}" alt="Icono" class="me-3"></a>
             <h4>Desert WorldWide</h4>
             <div class="text-right"> <!-- Centra los elementos internos -->
                 <a href="principal/carreras"><p>¡Todas las competiciones!</p></a>

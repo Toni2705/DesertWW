@@ -124,13 +124,11 @@ $idCorredor = Auth::id();
                             @endfor
                     </select>
                 </div>
-<<<<<<< HEAD
                 <button type="submit" class="btn btn-success">Verifica si eres humano!</button>
             </form>
             <?php
         } elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
             echo 'No es posible inscribirse a esta carrera, faltan menos de 10 dias para que comience.';
-=======
             </form>
             <input type="hidden" id="precioInscripcion" value="{{ $carrera->precio_inscripcion }}">
             <script src="{{ asset('js/paypal.js') }}"></script>
@@ -142,7 +140,6 @@ $idCorredor = Auth::id();
             // var_dump('SII PUEDES INSCRIBIRTE, QUEDAN MÁS DE 10 DIAS PARA QUE EMPIECE LA CARRERA');
             // echo '<br>';
             // echo $carrera->fecha_inicio;
->>>>>>> bc2dc39ad24fba76ffef03011750f01e7cc4e3bd
         } else {
             echo 'No es posible inscribirse a esta carrera, ya ha finalizado.';
         }
@@ -152,7 +149,6 @@ $idCorredor = Auth::id();
 
     <script>
         // Evento para mostrar el formulario al hacer clic en el botón "Inscribirse"
-<<<<<<< HEAD
         $(document).ready(function() {
             // Agregar un evento de clic al botón de inscribirse
             // $('#formularioInscripcion').submit(function(event) {
@@ -253,11 +249,9 @@ $idCorredor = Auth::id();
                 actualizarEstadoBotonRegistro();
             });
 
-=======
         document.getElementById("mostrarFormulario").addEventListener("click", function() {
             document.getElementById("formularioInscripcion").style.display = "block";
             document.getElementById("paypal-button-container").style.display = "block";
->>>>>>> bc2dc39ad24fba76ffef03011750f01e7cc4e3bd
         });
     </script>
 
