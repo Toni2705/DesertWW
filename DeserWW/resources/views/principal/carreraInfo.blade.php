@@ -1,13 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\VarDumper\VarDumper;
-
 $idCorredor = Auth::id();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +11,6 @@ $idCorredor = Auth::id();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://www.paypal.com/sdk/js?client-id=Afb7Pf6VOC-Xum8-A3sLFZ37rBBWd-aaQ6dlld30-_IQDxXejIuA3lVcXicaLrPYkJZQ0KIHHeYekAGy&currency=EUR"></script>
-
 </head>
 <style>
     .imgCartel {
@@ -24,12 +19,11 @@ $idCorredor = Auth::id();
         padding-top: 15px;
     }
 </style>
-
 <body>
     @if (Auth::check())
-    @include('principal/headerLogeado')
+        @include('principal/headerLogeado')
     @else
-    @include('principal/headerPrincipal')
+        @include('principal/headerPrincipal')
     @endif
     <div class="container">
         <div class="row">
@@ -49,101 +43,84 @@ $idCorredor = Auth::id();
                     <h5>Km de carrera: {{ $carrera->km }}km</h5>
                     <h5>Precio: {{ $carrera->precio_inscripcion }} €</h5>
                     <img src="{{ asset($carrera->mapa) }}" alt="Mapa de {{ $carrera->nombre }}" class="imgMapa">
-
                 </div>
             </div>
         </div>
 
-        <?php
-        if (strtotime($carrera->fecha_inicio) >= strtotime('+10 days')) {
-        ?>
+        @if (strtotime($carrera->fecha_inicio) >= strtotime('+10 days'))
             <!-- Botón para mostrar el formulario -->
             <button id="mostrarFormulario" class="btn btn-primary">Inscribirse</button>
-
             <!-- Formulario de inscripción (inicialmente oculto) -->
-            <!-- <form id="formularioInscripcion" action="{{ route('inscribirse') }}" method="POST" style="display: none;"> -->
             <form id="formularioInscripcion" action="{{ route('comprobacionPost') }}" method="GET" style="display: none;">
                 @csrf <!-- Directiva de Blade para incluir el token CSRF -->
                 <input type="hidden" name="carrera_id" value="{{ $carrera->id }}">
                 @if (Auth::check())
-                <input type="hidden" name="corredor_id" value="{{ $idCorredor}}">
+                    <input type="hidden" name="corredor_id" value="{{ $idCorredor}}">
                 @else
-                <input type="hidden" name="corredor_id" value="">
-                <!-- Campo de DNI -->
-                <div class="form-group">
-                    <label for="dni">DNI:</label>
-                    <div class="error-message ml-2 d-inline-block"></div>
-                    <input type="text" id="dni" name="dni" required class="form-control">
-                </div>
-
-                <!-- Campo de nombre -->
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required class="form-control">
-                </div>
-
-                <!-- Campo de apellidos -->
-                <div class="form-group">
-                    <label for="apellidos">Apellidos:</label>
-                    <input type="text" id="apellidos" name="apellidos" required class="form-control">
-                </div>
-
-                <!-- Campo de dirección -->
-                <div class="form-group">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" id="direccion" name="direccion" required class="form-control">
-                </div>
-
-                <!-- Campo de fecha de nacimiento -->
-                <div class="form-group">
-                    <label for="nacimiento">Fecha de nacimiento:</label>
-                    <div class="error-message ml-2 d-inline-block"></div>
-                    <input type="date" id="nacimiento" name="nacimiento" required class="form-control">
-                </div>
-
-                <!-- Campo de nivel -->
-                <div class="form-group">
-                    <label for="nivel">Nivel:</label>
-                    <select name="nivel" id="nivel" class="form-control">
-                        <option value="OPEN" selected>OPEN</option>
-                        <option value="PRO">PRO</option>
-                    </select>
-                </div>
-
-                <!-- Campo de número de federado (solo visible si el nivel es PRO) -->
-                <div class="form-group" id="numero_federado_div">
-                    <label for="numero_federado">Número de federado (PRO):</label>
-                    <input type="text" id="numero_federado" name="numero_federado" class="form-control" disabled>
-                </div>
+                    <input type="hidden" name="corredor_id" value="">
+                    <!-- Campos de datos del corredor -->
+                    <!-- Campo de DNI -->
+                    <div class="form-group">
+                        <label for="dni">DNI:</label>
+                        <div class="error-message ml-2 d-inline-block"></div>
+                        <input type="text" id="dni" name="dni" required class="form-control">
+                    </div>
+                    <!-- Campo de nombre -->
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required class="form-control">
+                    </div>
+                    <!-- Campo de apellidos -->
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellidos" required class="form-control">
+                    </div>
+                    <!-- Campo de dirección -->
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" required class="form-control">
+                    </div>
+                    <!-- Campo de fecha de nacimiento -->
+                    <div class="form-group">
+                        <label for="nacimiento">Fecha de nacimiento:</>
+                        <div class="error-message ml-2 d-inline-block"></div>
+                        <input type="date" id="nacimiento" name="nacimiento" required class="form-control">
+                    </div>
+                    <!-- Campo de nivel -->
+                    <div class="form-group">
+                        <label for="nivel">Nivel:</label>
+                        <select name="nivel" id="nivel" class="form-control">
+                            <option value="OPEN" selected>OPEN</option>
+                            <option value="PRO">PRO</option>
+                        </select>
+                    </div>
+                    <!-- Campo de número de federado (solo visible si el nivel es PRO) -->
+                    <div class="form-group" id="numero_federado_div">
+                        <label for="numero_federado">Número de federado (PRO):</label>
+                        <input type="text" id="numero_federado" name="numero_federado" class="form-control" disabled>
+                    </div>
                 @endif
+                <!-- Campo de selección de seguro -->
                 <div class="mb-3">
                     <label for="seguro" class="form-label">Selecciona un seguro:</label>
                     <select name="seguro" id="seguro" class="form-select" required>
                         <option value="" selected disabled>Selecciona un seguro</option>
-                        @for($i = 0; $i < count($seguros) && $i < 4; $i++) <option value="{{$seguros[$i]->id}}">{{$seguros[$i]->nombre}}</option>
-                            @endfor
+                        @for($i = 0; $i < count($seguros) && $i < 4; $i++) 
+                            <option value="{{$seguros[$i]->id}}">{{$seguros[$i]->nombre}}</option>
+                        @endfor
                     </select>
                 </div>
                 <button type="submit" class="btn btn-success">Verifica si eres humano!</button>
             </form>
-            <?php
-        } elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
-            echo 'No es posible inscribirse a esta carrera, faltan menos de 10 dias para que comience.';
-            </form>
+        @elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days'))
+            <p>No es posible inscribirse a esta carrera, faltan menos de 10 dias para que comience.</p>
+            <!-- <form action="{{ route('inscribirse') }}" method="POST"> -->
             <input type="hidden" id="precioInscripcion" value="{{ $carrera->precio_inscripcion }}">
             <script src="{{ asset('js/paypal.js') }}"></script>
-
-            <div id="paypal-button-container" style="display: none;"></div>
-
-
-            <?php
-            // var_dump('SII PUEDES INSCRIBIRTE, QUEDAN MÁS DE 10 DIAS PARA QUE EMPIECE LA CARRERA');
-            // echo '<br>';
-            // echo $carrera->fecha_inicio;
-        } else {
-            echo 'No es posible inscribirse a esta carrera, ya ha finalizado.';
-        }
-            ?>
+            <div id="paypal-button-container" style=""></div>
+        @else
+            <p>No es posible inscribirse a esta carrera, ya ha finalizado.</p>
+        @endif
     </div>
 
 
@@ -151,10 +128,10 @@ $idCorredor = Auth::id();
         // Evento para mostrar el formulario al hacer clic en el botón "Inscribirse"
         $(document).ready(function() {
             // Agregar un evento de clic al botón de inscribirse
-            // $('#formularioInscripcion').submit(function(event) {
+             $('#formularioInscripcion').submit(function(event) {
             //     // Detener el envío del formulario
-            //     event.preventDefault();
-            // });
+                 event.preventDefault();
+             });
             $('#mostrarFormulario').click(function() {
                 $("#formularioInscripcion").css("display", "block");
             });

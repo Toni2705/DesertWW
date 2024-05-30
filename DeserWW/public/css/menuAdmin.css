@@ -1,0 +1,30 @@
+body {
+    overflow-y: hidden;
+    margin: 0;
+}
+
+#contenidoPrincipal {
+    background-image: url('{{ asset("images/fondo.png") }}');
+    background-size: cover;
+    /* La imagen de fondo cubrirá todo el contenedor sin repetirse */
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    text-align: center;
+    /* Centra horizontalmente el contenido */
+}
+
+.imagen {
+    margin-bottom: 20px;
+}
+
+.img {
+    width: 250px;
+    height: 310px;
+    border-radius: 10%;
+    border-style: solid;
+    border-color: black;
+}
