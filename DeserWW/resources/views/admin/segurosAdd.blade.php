@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <form action="{{ route('guardar-seguro') }}" method="POST" class="mt-4">
             <h2 class="mt-5">Añadir Seguro</h2>
@@ -33,6 +34,9 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Agregar Seguro</button>
             </div>
+            <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
         </form>
     </div>
 

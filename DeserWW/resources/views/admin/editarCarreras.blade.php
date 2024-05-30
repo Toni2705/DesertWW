@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <form action="{{ route('editar-carreras') }}" method="POST" class="mt-4">
             <h2 class="mt-3">Editar Carrera</h2>
@@ -70,6 +71,9 @@
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
             </div>
         </form>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

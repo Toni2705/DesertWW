@@ -8,8 +8,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/carrerasAdmin.css') }}" rel="stylesheet">
 </head>
-
+@include('admin/headerAdmin')
 <body>
+
     <div class="general mt-5">
         <h2>Carreras</h2>
         <h4><a href="{{ route('agregar-carrera') }}" class="btn btn-primary">Añadir</a></h4>
@@ -55,7 +56,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <a href="#" onclick="window.history.back();">
+                <h5>Volver</h5>
+            </a>
         </div>
+        
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

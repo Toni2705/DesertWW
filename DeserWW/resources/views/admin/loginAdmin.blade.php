@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <div class="wrapper">
         <div class="login-box">
             <h2 class="text-center mb-4">Login</h2>
@@ -35,6 +36,9 @@
                 </div>
             </form>
         </div>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </div>
     <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
 </body>

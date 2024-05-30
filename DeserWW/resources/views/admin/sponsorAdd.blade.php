@@ -7,6 +7,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/sponsorAdd.css') }}" rel="stylesheet">
 </head>
+
 <body>
 
 
@@ -36,6 +37,9 @@
         <div>
             <button type="submit" class="btn btn-primary">Agregar Sponsor</button>
         </div>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </form>
 
 </body>

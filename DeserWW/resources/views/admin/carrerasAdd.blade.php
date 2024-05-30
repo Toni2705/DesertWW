@@ -10,6 +10,7 @@
 <body>
 
     <form action="{{ route('agregar-carrera') }}" method="POST">
+    
     <h2>Añadir Carrera</h2>
 
         @csrf
@@ -68,6 +69,9 @@
         <div>
             <button type="submit" class="btn btn-primary">Agregar Carrera</button>
         </div>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </form>
 </body>
 </html>

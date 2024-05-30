@@ -7,8 +7,9 @@
     <title>SegurosAdmin</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
+@include('admin/headerAdmin')
 <body>
+
     <div class="container">
         <h2>Seguros</h2>
 
@@ -36,6 +37,9 @@
                 @endforeach
             </tbody>
         </table>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

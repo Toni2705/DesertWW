@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <form action="{{ route('editar-seguros') }}" method="POST">
         <h2>Editar Seguro</h2>
         @csrf
@@ -33,7 +34,11 @@
         <div>
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
         </div>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </form>
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

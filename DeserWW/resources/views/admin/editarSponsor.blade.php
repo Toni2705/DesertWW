@@ -8,6 +8,7 @@
     <link href="{{ asset('css/editarSponsor.css') }}" rel="stylesheet">
    
 </head>
+
 <body>
 
 
@@ -38,6 +39,9 @@
         <div>
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
         </div>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </form>
 
 

@@ -4,9 +4,8 @@ body {
 }
 
 #contenidoPrincipal {
-    background-image: url('{{ asset("images/fondo.png") }}');
+    background-image: url('../images/fondo.png');
     background-size: cover;
-    /* La imagen de fondo cubrirá todo el contenedor sin repetirse */
     background-position: center;
     display: flex;
     justify-content: center;
