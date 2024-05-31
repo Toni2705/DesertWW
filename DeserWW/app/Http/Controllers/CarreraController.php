@@ -122,4 +122,11 @@ class CarreraController extends Controller
         ]);
 
     }
+
+    public function añadirFotos($id)
+{
+    $carrera = Carrera::find($id);
+    return view('admin/subirFotos', compact('carrera'));
+}
+
 }

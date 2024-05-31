@@ -1,0 +1,14 @@
+#header img {
+    width: 80px;
+    height: 50px;
+}
+#header{
+    height: 70px;
+    background-color: rgb(43, 43, 43)
+
+}
+#header h2 {
+    color: white;
+    text-align: center;
+    flex-grow: 1;
+}

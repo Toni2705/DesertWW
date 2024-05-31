@@ -5,51 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Carrera</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        
-            margin: 0;
-        }
-        form {
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        form div {
-            margin-bottom: 15px;
-        }
-        form label {
-            font-weight: bold;
-        }
-        form input[type="text"],
-        form input[type="number"],
-        form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        form button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-        }
-    </style>
+    <link href="{{ asset('css/carrerasAdd.css') }}" rel="stylesheet">
 </head>
 <body>
 
     <form action="{{ route('agregar-carrera') }}" method="POST">
+    
     <h2>Añadir Carrera</h2>
 
         @csrf
@@ -108,6 +69,9 @@
         <div>
             <button type="submit" class="btn btn-primary">Agregar Carrera</button>
         </div>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </form>
 </body>
 </html>

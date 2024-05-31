@@ -6,39 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Admin</title>
-    <style>
-        /* Estilos personalizados */
-        body {
-            overflow-y: hidden;
-            margin: 0;
-        }
-
-        #contenidoPrincipal {
-            background-image: url('{{ asset("images/fondo.png") }}');
-            background-size: cover;
-            /* La imagen de fondo cubrirá todo el contenedor sin repetirse */
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            height: 100vh;
-            text-align: center;
-            /* Centra horizontalmente el contenido */
-        }
-
-        .imagen {
-            margin-bottom: 20px;
-        }
-
-        .img {
-            width: 250px;
-            height: 310px;
-            border-radius: 10%;
-            border-style: solid;
-            border-color: black;
-        }
-    </style>
+    <link href="{{ asset('css/menuAdmin.css') }}" rel="stylesheet">
+    
 </head>
 @include('admin/headerAdmin')
 <div id="contenidoPrincipal">

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Carrera</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/editarForm.css') }}" rel="stylesheet">
 </head>
+
 <body>
+
     <div class="container">
         <form action="{{ route('editar-carreras') }}" method="POST" class="mt-4">
-        <h2 class="mt-5">Editar Carrera</h2>
-
+            <h2 class="mt-3">Editar Carrera</h2>
             @csrf
             <input type="hidden" name="id" value="{{ $carrera->id }}">
             <div class="form-group">
@@ -68,6 +71,14 @@
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
             </div>
         </form>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

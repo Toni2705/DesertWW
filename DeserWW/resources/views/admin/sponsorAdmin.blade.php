@@ -6,11 +6,12 @@
     <title>Sponsors</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+@include('admin/headerAdmin')
 <body>
-<h2>Patrocinadores</h2>
 
-<h4><a href="{{ route('añadir-sponsor') }}"class="btn btn-primary">Añadir</a></h4>
 <div class="container">
+<h2>Patrocinadores</h2>
+<h4><a href="{{ route('añadir-sponsor') }}"class="btn btn-primary">Añadir</a></h4>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -39,6 +40,9 @@
         @endforeach
     </tbody>
 </table>
+<a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
 </div>
 </body>
 </html>

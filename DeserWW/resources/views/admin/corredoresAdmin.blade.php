@@ -8,8 +8,9 @@
     <!-- Provided Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
+@include('admin/headerAdmin')
 <body>
+
     <div class="container mt-5">
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -31,6 +32,9 @@
                 @endforeach
             </tbody>
         </table>
+        <a href="#" onclick="window.history.back();">
+        <h5>Volver</h5>
+    </a>
     </div>
 </body>
 
