@@ -161,11 +161,13 @@
         // Añadir evento click al botón Volver a intentar para restablecer el juego
         document.getElementById("volverAIntentar").addEventListener("click", function() {
             // Aquí puedes restablecer el juego, limpiar el arreglo y resetear el estado de los elementos
-            arreglo = ["", "", ""];
-            document.querySelector("h1").innerHTML = "Arrastra donde corresponde!";
-            document.getElementById("inscribirse").disabled = true;
-            document.getElementById("volverAIntentar").disabled = true;
+            // arreglo = ["", "", ""];
+            // document.querySelector("h1").innerHTML = "Arrastra donde corresponde!";
+            // document.getElementById("inscribirse").disabled = true;
+            // document.getElementById("volverAIntentar").disabled = true;
             // También puedes restablecer la posición de las imágenes si es necesario
+            location.reload();
+
         });
     </script>
 </body>
