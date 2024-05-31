@@ -22,6 +22,7 @@ use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\CorredorController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\DorsalController;
+use App\Http\Controllers\FotoController;
 
 use App\Models\Corredor;
 
@@ -35,6 +36,11 @@ Route::get('/mostrar-datos-en-vista', [CarreraController::class, 'mostrarDatosEn
 Route::post('/editar-carreras', [CarreraController::class, 'editarCarreras1'])->name('editar-carreras');
 
 Route::get('/carreras/{id}/editar', [CarreraController::class, 'editarCarrera'])->name('editar-carrera');
+
+Route::get('/carrera/{id}/añadir-fotos', [CarreraController::class, 'añadirFotos'])->name('añadir-fotos');
+
+
+Route::post('/carrera/{carrera_id}/fotos', [FotoController::class, 'store'])->name('carrera.fotos.store');
 
 Route::get('/agregar-carrera', [CarreraController::class, 'añadirCarreras'])->name('agregar-carrera');
 

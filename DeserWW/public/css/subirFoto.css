@@ -1,0 +1,33 @@
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+#drop-area.highlight {
+    border-color: #007bff;
+}
+
+#fileInput {
+    display: none;
+}
+
+#image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.preview-image {
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

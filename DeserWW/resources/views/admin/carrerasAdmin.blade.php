@@ -52,6 +52,7 @@
                         <td>{{ $dato->precio_inscripcion }}€</td>
                         <td>{{ $dato->id_sponsor }}</td>
                         <td><a href="{{ route('editar-carrera', ['id' => $dato->id]) }}" class="btn btn-primary">Editar</a></td>
+                        <td><a href="{{ route('añadir-fotos', ['id' => $dato->id]) }}" class="btn btn-primary">Añadir fotos</a></td>
                     </tr>
                     @endforeach
                 </tbody>
