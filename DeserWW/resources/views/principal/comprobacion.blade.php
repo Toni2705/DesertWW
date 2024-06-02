@@ -121,6 +121,18 @@
     </div>
     <button type="button" class="btn btn-success" id="inscribirse" disabled>Inscribirse</button>
     <button type="button" class="btn btn-primary" id="volverAIntentar" disabled>Volver a intentar</button>
+    <!-- resources/views/tu_vista.blade.php -->
+    <form action="{{ route('downloadPDF') }}" method="get">
+        <!-- Tonichan, aqui me tienes que poner los campos para que se impriman en la factura -->
+        <input type="hidden" name="carrera" value="valor1">
+        <input type="hidden" name="fechaCarrera" value="valor2">
+        <input type="hidden" name="fechaInscripcion" value="valor1">
+        <input type="hidden" name="nombre" value="valor2">
+        <input type="hidden" name="dorsal" value="valor1">
+        <input type="hidden" name="seguro" value="valor2">
+        <input type="hidden" name="precio" value="valor2">
+        <button type="submit" class="btn" id="pdf" disabled>Descargar PDF</button>
+    </form>
 
     <script>
         let arreglo = ["", "", ""];
@@ -143,10 +155,12 @@
                 if (arreglo[0] == "desierto" && arreglo[1] == "meta" && arreglo[2] == "coche") {
                     document.querySelector("h1").innerHTML = "Verificacion correcta!";
                     document.getElementById("inscribirse").disabled = false;
+                    document.getElementById("pdf").disabled = false;
                     document.getElementById("volverAIntentar").disabled = true;
                 } else {
                     document.querySelector("h1").innerHTML = "Incorrecto, vuelva a inscribirse!";
                     document.getElementById("inscribirse").disabled = true;
+                    document.getElementById("pdf").disabled = true;
                     document.getElementById("volverAIntentar").disabled = false;
                 }
             }

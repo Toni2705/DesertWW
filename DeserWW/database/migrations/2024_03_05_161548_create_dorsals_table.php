@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_seguro');
             $table->string('qr');
             $table->string('dorsal');
+            $table->time('tiempo')->nullable();
             $table->timestamps();
 
             // Claves foráneas

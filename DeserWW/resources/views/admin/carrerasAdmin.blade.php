@@ -53,6 +53,7 @@
                         <td>{{ $dato->id_sponsor }}</td>
                         <td><a href="{{ route('editar-carrera', ['id' => $dato->id]) }}" class="btn btn-primary">Editar</a></td>
                         <td><a href="{{ route('añadir-fotos', ['id' => $dato->id]) }}" class="btn btn-primary">Añadir fotos</a></td>
+                        <td><a href="{{ route('generatePDF', ['id' => $dato->id]) }}" class="btn btn-primary">Dorsales</a></td>
                     </tr>
                     @endforeach
                 </tbody>

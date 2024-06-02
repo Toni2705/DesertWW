@@ -1,32 +1,21 @@
 <?php
-<<<<<<< HEAD
 
 
 use Illuminate\Support\Facades\Auth;
 
 
-=======
-use Illuminate\Support\Facades\Auth;
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
 $idCorredor = Auth::id();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $carrera->nombre }}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-=======
-    <script src="https://www.paypal.com/sdk/js?client-id=Afb7Pf6VOC-Xum8-A3sLFZ37rBBWd-aaQ6dlld30-_IQDxXejIuA3lVcXicaLrPYkJZQ0KIHHeYekAGy&currency=EUR"></script>
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
 </head>
 
 
@@ -37,11 +26,8 @@ $idCorredor = Auth::id();
         padding-top: 15px;
     }
 </style>
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
 <body>
     @if (Auth::check())
         @include('principal/headerLogeado')
@@ -70,26 +56,17 @@ $idCorredor = Auth::id();
             </div>
         </div>
 
-<<<<<<< HEAD
 
         <?php
         if (strtotime($carrera->fecha_inicio) >= strtotime('+10 days')) {
         ?>
             <!-- Botón para mostrar el formulario -->
             <form action="{{ route('comprobacion') }}" method="GET">
-=======
-        @if (strtotime($carrera->fecha_inicio) >= strtotime('+10 days'))
-            <!-- Botón para mostrar el formulario -->
-            <button id="mostrarFormulario" class="btn btn-primary">Inscribirse</button>
-            <!-- Formulario de inscripción (inicialmente oculto) -->
-            <form id="formularioInscripcion" action="{{ route('comprobacionPost') }}" method="GET" style="display: none;">
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
                 @csrf <!-- Directiva de Blade para incluir el token CSRF -->
                 <input type="hidden" name="carrera_id" value="{{ $carrera->id }}">
                 @if (Auth::check())
                     <input type="hidden" name="corredor_id" value="{{ $idCorredor}}">
                 @else
-<<<<<<< HEAD
                 <input type="hidden" name="corredor_id" value="">
                 <!-- Campo de DNI -->
                 <div class="form-group">
@@ -143,50 +120,6 @@ $idCorredor = Auth::id();
                     <label for="numero_federado">Número de federado (PRO):</label>
                     <input type="text" id="numero_federado" name="numero_federado" class="form-control" disabled>
                 </div>
-=======
-                    <input type="hidden" name="corredor_id" value="">
-                    <!-- Campos de datos del corredor -->
-                    <!-- Campo de DNI -->
-                    <div class="form-group">
-                        <label for="dni">DNI:</label>
-                        <div class="error-message ml-2 d-inline-block"></div>
-                        <input type="text" id="dni" name="dni" required class="form-control">
-                    </div>
-                    <!-- Campo de nombre -->
-                    <div class="form-group">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required class="form-control">
-                    </div>
-                    <!-- Campo de apellidos -->
-                    <div class="form-group">
-                        <label for="apellidos">Apellidos:</label>
-                        <input type="text" id="apellidos" name="apellidos" required class="form-control">
-                    </div>
-                    <!-- Campo de dirección -->
-                    <div class="form-group">
-                        <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" required class="form-control">
-                    </div>
-                    <!-- Campo de fecha de nacimiento -->
-                    <div class="form-group">
-                        <label for="nacimiento">Fecha de nacimiento:</>
-                        <div class="error-message ml-2 d-inline-block"></div>
-                        <input type="date" id="nacimiento" name="nacimiento" required class="form-control">
-                    </div>
-                    <!-- Campo de nivel -->
-                    <div class="form-group">
-                        <label for="nivel">Nivel:</label>
-                        <select name="nivel" id="nivel" class="form-control">
-                            <option value="OPEN" selected>OPEN</option>
-                            <option value="PRO">PRO</option>
-                        </select>
-                    </div>
-                    <!-- Campo de número de federado (solo visible si el nivel es PRO) -->
-                    <div class="form-group" id="numero_federado_div">
-                        <label for="numero_federado">Número de federado (PRO):</label>
-                        <input type="text" id="numero_federado" name="numero_federado" class="form-control" disabled>
-                    </div>
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
                 @endif
                 <!-- Campo de selección de seguro -->
                 <div class="mb-3">
@@ -200,41 +133,42 @@ $idCorredor = Auth::id();
                 </div>
                 <button type="submit" class="btn btn-primary">Inscribirse</button>
             </form>
-<<<<<<< HEAD
         <?php
         } elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
             echo 'No es posible inscribirse a esta carrera, faltan menos de 10 días para que comience.';
+        } elseif (strtotime($carrera->fecha_inicio) <= strtotime('+1 days')) {
+        ?>
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <h2>Clasificación</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Corredor</th>
+                                <th>Tiempo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($dorsalesCompletados as $dorsal)
+                                <tr>
+                                    <td>{{ $dorsal->corredor->nombre }} {{ $dorsal->corredor->apellidos }}</td>
+                                    <td>{{ $dorsal->tiempo }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <?php
         } else {
             echo 'No es posible inscribirse a esta carrera, ya ha finalizado.';
         }
         ?>
-=======
-        @elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days'))
-            <p>No es posible inscribirse a esta carrera, faltan menos de 10 dias para que comience.</p>
-            <!-- <form action="{{ route('inscribirse') }}" method="POST"> -->
-            <input type="hidden" id="precioInscripcion" value="{{ $carrera->precio_inscripcion }}">
-            <script src="{{ asset('js/paypal.js') }}"></script>
-            <div id="paypal-button-container" style=""></div>
-        @else
-            <p>No es posible inscribirse a esta carrera, ya ha finalizado.</p>
-        @endif
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
     </div>
 
 
     <script>
         $(document).ready(function() {
-<<<<<<< HEAD
-=======
-            // Agregar un evento de clic al botón de inscribirse
-             $('#formularioInscripcion').submit(function(event) {
-            //     // Detener el envío del formulario
-                 event.preventDefault();
-             });
-            $('#mostrarFormulario').click(function() {
-                $("#formularioInscripcion").css("display", "block");
-            });
->>>>>>> 1a4b85524659d5efa6a70fec8ba61ba39362dc80
             $('#nivel').change(function() {
                 if ($(this).val() === 'PRO') {
                     $('#numero_federado').prop('disabled', false);

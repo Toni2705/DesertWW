@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Dorsal;
 use App\Models\Corredor;
+use App\Models\Carrera;
 use Illuminate\Http\Request;
+use Endroid\QrCode\QrCode;
+use Carbon\Carbon;
 
 class DorsalController extends Controller
 {
@@ -12,11 +15,18 @@ class DorsalController extends Controller
     {
         // Verificar si el usuario está autenticado
         if ($request->input('corredor_id') != null) {
-            
-            // Obtener el usuario autenticado
+            $dorsalId = $request->input('id');
             $carreraId = $request->input('carrera_id');
             $corredorId = $request->input('corredor_id');
             $seguroId = $request->input('seguro');
+
+            // Generar el código QR con el ID del dorsal
+            $qrCode = new QrCode('read-qr/'.$dorsalId);
+
+
+            // Guardar la imagen del código QR en el almacenamiento
+            $qrPath = public_path('qr_codes/' . $corredorId . '.jpg');
+            $qrCode->writeFile(storage_path('app/public/' . $qrPath));
 
             $ultimoDorsal = Dorsal::where('id_carrera', $carreraId)->orderBy('dorsal', 'desc')->first();
             $numeroDorsal = $ultimoDorsal ? intval(substr($ultimoDorsal->dorsal, 1)) + 1 : 1;
@@ -27,7 +37,7 @@ class DorsalController extends Controller
             $dorsal->id_corredor = $corredorId;
             $dorsal->id_seguro = $seguroId;
             $dorsal->dorsal = "D". $numeroDorsal;
-            $dorsal->qr = "qrfoto.jpg";
+            $dorsal->qr = $qrPath;
 
 
             // Guardar el nuevo dorsal en la base de datos
@@ -40,5 +50,21 @@ class DorsalController extends Controller
             $invitado = Corredor::insertarCorredor($request->input('dni'), $request->input('nombre'), $request->input('apellidos'),$request->input('direccion'), $request->input('nacimiento'), $request->input('nivel'), $request->input('numero_federado'), $request->input('seguro'));
             // var_dump($request->input('dni'));
         }
+    }
+
+    public function clasificacion(Request $request, $carreraId)
+    {
+        // Obtener los dorsales completados para la carrera específica
+        $dorsalesCompletados = DB::table('dorsals')
+            ->select('corredors.nombre', 'corredors.apellidos', 'dorsals.tiempo')
+            ->join('corredors', 'corredors.id', '=', 'dorsals.id_corredor')
+            ->where('dorsals.id_carrera', $carreraId)
+            ->whereNotNull('dorsals.tiempo')
+            ->orderBy('dorsals.tiempo')
+            ->get();
+
+
+        // Devolver la vista con los dorsales completados y sus tiempos
+        return view('clasificacion', compact('dorsalesCompletados'));
     }
 }
