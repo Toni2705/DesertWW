@@ -51,20 +51,4 @@ class DorsalController extends Controller
             // var_dump($request->input('dni'));
         }
     }
-
-    public function clasificacion(Request $request, $carreraId)
-    {
-        // Obtener los dorsales completados para la carrera específica
-        $dorsalesCompletados = DB::table('dorsals')
-            ->select('corredors.nombre', 'corredors.apellidos', 'dorsals.tiempo')
-            ->join('corredors', 'corredors.id', '=', 'dorsals.id_corredor')
-            ->where('dorsals.id_carrera', $carreraId)
-            ->whereNotNull('dorsals.tiempo')
-            ->orderBy('dorsals.tiempo')
-            ->get();
-
-
-        // Devolver la vista con los dorsales completados y sus tiempos
-        return view('clasificacion', compact('dorsalesCompletados'));
-    }
 }

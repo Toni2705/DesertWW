@@ -136,29 +136,33 @@ $idCorredor = Auth::id();
         <?php
         } elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
             echo 'No es posible inscribirse a esta carrera, faltan menos de 10 días para que comience.';
-        } elseif (strtotime($carrera->fecha_inicio) <= strtotime('+1 days')) {
+        } elseif (strtotime($carrera->fecha_inicio) <= strtotime('now') && strtotime($carrera->fecha_inicio) > strtotime('-1 day')) {
         ?>
-            <div class="row mt-5">
-                <div class="col-md-12">
-                    <h2>Clasificación</h2>
-                    <table class="table">
-                        <thead>
+            @if ($dorsalesCompletados->isNotEmpty())
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h2>Clasificación</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Corredor</th>
+                            <th>Tiempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($dorsalesCompletados as $dorsal)
                             <tr>
-                                <th>Nombre del Corredor</th>
-                                <th>Tiempo</th>
+                                <td>{{ $dorsal->corredor->nombre }} {{ $dorsal->corredor->apellidos }}</td>
+                                <td>{{ $dorsal->tiempo }}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($dorsalesCompletados as $dorsal)
-                                <tr>
-                                    <td>{{ $dorsal->corredor->nombre }} {{ $dorsal->corredor->apellidos }}</td>
-                                    <td>{{ $dorsal->tiempo }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+        </div>
+    @else
+        <p>No hay dorsales completados para esta carrera.</p>
+    @endif
         <?php
         } else {
             echo 'No es posible inscribirse a esta carrera, ya ha finalizado.';

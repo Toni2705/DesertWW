@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carrera;
 use App\Models\Seguro;
 use App\Models\Sponsor;
+use App\Models\Dorsal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Symfony\Component\VarDumper\VarDumper;
@@ -38,8 +39,13 @@ class CarreraController extends Controller
         // Verificar si se encontró la carrera
         if ($carrera) {
             $seguros = Seguro::obtenerTodosLosDatos();
-            // Retornar la vista con los datos de la carrera
-            return view('principal/carreraInfo', ['carrera' => $carrera],['seguros'=> $seguros]);
+            // Obtener los dorsales completados para esta carrera
+            $dorsalesCompletados = Dorsal::where('id_carrera', $id)
+            ->whereNotNull('tiempo')
+            ->with('corredor') // Assuming Dorsal model has a relationship with Corredor
+            ->get();
+            // Retornar la vista con los datos de la carrera y los dorsales completados
+            return view('principal/carreraInfo', compact('carrera', 'seguros', 'dorsalesCompletados'));
         } else {
             // Retornar una respuesta en caso de que la carrera no se encuentre
             return response()->json(['message' => 'Carrera no encontrada'], 404);
@@ -123,10 +129,24 @@ class CarreraController extends Controller
 
     }
 
-    public function añadirFotos($id)
-{
-    $carrera = Carrera::find($id);
-    return view('admin/subirFotos', compact('carrera'));
-}
+    public function añadirFotos($id){
+        $carrera = Carrera::find($id);
+        return view('admin/subirFotos', compact('carrera'));
+    }
+
+    public function clasificacion(Request $request, $carreraId){
+        // Obtener los dorsales completados para la carrera específica
+        $dorsalesCompletados = DB::table('dorsals')
+            ->select('corredors.nombre', 'corredors.apellidos', 'dorsals.tiempo')
+            ->join('corredors', 'corredors.id', '=', 'dorsals.id_corredor')
+            ->where('dorsals.id_carrera', $carreraId)
+            ->whereNotNull('dorsals.tiempo')
+            ->orderBy('dorsals.tiempo')
+            ->get();
+
+
+        // Devolver la vista con los dorsales completados y sus tiempos
+        return view('clasificacion', compact('dorsalesCompletados'));
+    }
 
 }
