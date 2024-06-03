@@ -136,6 +136,7 @@ $idCorredor = Auth::id();
         <?php
         } elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
             echo 'No es posible inscribirse a esta carrera, faltan menos de 10 días para que comience.';
+            
         } elseif (strtotime($carrera->fecha_inicio) <= strtotime('now') && strtotime($carrera->fecha_inicio) > strtotime('-1 day')) {
         ?>
             @if ($dorsalesCompletados->isNotEmpty())
@@ -166,6 +167,9 @@ $idCorredor = Auth::id();
         <?php
         } else {
             echo 'No es posible inscribirse a esta carrera, ya ha finalizado.';
+            ?>
+            <a href="{{ route('mostrarFotos', ['id' => $carrera->id]) }}">Ver fotos</a>
+            <?php
         }
         ?>
     </div>

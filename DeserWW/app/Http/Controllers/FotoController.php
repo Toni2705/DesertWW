@@ -29,6 +29,15 @@ class FotoController extends Controller
     return redirect()->back()->with('success', 'Imágenes subidas correctamente.');
 }
 
+    public function mostrarFotos($id)
+    {
+        // Obtener todas las fotos de la carrera con el ID proporcionado
+        $fotos = Foto::where('carrera_id', $id)->get();
+        
+        // Pasar las fotos a la vista y retornarla
+        return view('principal/carrusel', compact('fotos'));
+    }
+
 
 
 }

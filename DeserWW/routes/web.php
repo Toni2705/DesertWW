@@ -154,6 +154,8 @@ Route::post('/inscribirse', [DorsalController::class, 'inscribirse'])->name('ins
 // Drag & Drop
 Route::get('/comprobacion/{precio}', [CarreraController::class, 'comprobacion'])->name('comprobacion');
 
+Route::get('/carrera/{id}/fotos', [FotoController::class, 'mostrarFotos'])->name('mostrarFotos');
+
 
 
 Route::post('/comprobacion', [DorsalController::class, 'comprobacion'])->name('comprobacionPost');
