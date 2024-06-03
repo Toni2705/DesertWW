@@ -102,7 +102,7 @@
 
 <body>
     @csrf
-    <p id="precio" >{{$precio}}</p>
+    <p id="precio" style="display: none">{{$precio}}</p>
     <p id="carreraId" style="display: none" >{{$carrera->id}}</p>
     <p id="corredorId" style="display: none">{{$corredor->id}}</p>
     <p id="seguro" style="display: none">{{$seguro->precio}}</p>
