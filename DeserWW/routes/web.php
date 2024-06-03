@@ -152,9 +152,10 @@ Route::post('/inscribirse', [DorsalController::class, 'inscribirse'])->name('ins
 
 
 // Drag & Drop
-Route::get('/comprobacion', function () {
-    return view('principal/comprobacion');
-})->name('comprobacion');
+Route::get('/comprobacion/{precio}', [CarreraController::class, 'comprobacion'])->name('comprobacion');
+
+
+
 Route::post('/comprobacion', [DorsalController::class, 'comprobacion'])->name('comprobacionPost');
 
 

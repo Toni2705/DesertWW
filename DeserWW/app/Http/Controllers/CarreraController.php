@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrera;
+use App\Models\Corredor;
 use App\Models\Seguro;
 use App\Models\Sponsor;
 use App\Models\Dorsal;
@@ -147,6 +148,15 @@ class CarreraController extends Controller
 
         // Devolver la vista con los dorsales completados y sus tiempos
         return view('clasificacion', compact('dorsalesCompletados'));
+    }
+
+    public function comprobacion(Request $request ,$precio){
+        $corredor = Corredor::where('id', $request->corredor_id)->first();
+        $carrera = Carrera::where('id', $request->carrera_id)->first();
+        $seguro = Seguro::where('id', $request->seguro)->first();
+        $dorsal = Dorsal::where('id_corredor', $request->corredor_id)->where('id_carrera', $request->carrera_id)->first();
+        
+        return view('principal/comprobacion', compact('precio','corredor', 'carrera', 'seguro','dorsal'));
     }
 
 }
