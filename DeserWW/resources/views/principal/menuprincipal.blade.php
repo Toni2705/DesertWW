@@ -8,45 +8,7 @@ use Illuminate\Support\Facades\Auth;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DesertWW</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .next-race-container {
-            background-color: rgba(255, 165, 0, 0.7); /* Fondo naranja transparente */
-            color: black; /* Color del texto */
-            padding: 20px; /* Espaciado interno */
-            height: 90px;
-            line-height: 100%; /* Alinear verticalmente */
-        }
-        h5{
-            line-height: 100%;
-        }
-        #carrera{
-            height: 50px;
-            width: 75px;
-        }
-        #countdown{
-            font-size: 18px;
-        }
-        .container{
-            margin-top: 20px;
-            text-align: center;
-        }
-        .card{
-            color: white;
-        }
-        .imgCartel{
-        width: 270px;
-        height: 450px;
-        padding-top: 15px;
-        }
-        .card-body{
-            width: 300px;
-            height: 500px;
-        }
-        a{
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
+    <link href="{{ asset('css/principalCSS/menu.css') }}" rel="stylesheet">
 </head>
 <body>
     
@@ -101,12 +63,12 @@ use Illuminate\Support\Facades\Auth;
 </div>
 <div class="container">
     <div class="row justify-content-center">
-        @for($i = 0; $i < count($datos) && $i < 4; $i++)
+        @for($i = 0; $i < count($carrerasFuturas) && $i < 4; $i++)
         <div class="col-md-3 mb-4">
             <div class="card bg-dark">
-                <a href="{{ route('carrera-info', ['id' => $datos[$i]->id]) }}"><div class="card-body">
-                    {{ $datos[$i]->nombre }}
-                    <img src="{{ asset($datos[$i]->cartel) }}" alt="Cartel de {{ $datos[$i]->nombre }}" class="imgCartel">
+                <a href="{{ route('carrera-info', ['id' => $carrerasFuturas[$i]->id]) }}"><div class="card-body">
+                    {{ $carrerasFuturas[$i]->nombre }}
+                    <img src="{{ asset($carrerasFuturas[$i]->cartel) }}" alt="Cartel de {{ $carrerasFuturas[$i]->nombre }}" class="imgCartel">
                 </div></a>
             </div>
         </div>
@@ -114,21 +76,18 @@ use Illuminate\Support\Facades\Auth;
     </div>
 </div>
 
-<!-- AQUI VA A IR EL FOOTER Y LOS SPONSORS QUE SON PRINCIPALES (SU LOGO) -->
-
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        @foreach($sponsors as $sponsor)        
-            <div class="col-md-3 mb-4">
-                <div class="card bg-dark">
-                    <div class="card-body">
-                        {{ $sponsor->nombre }}
-                    </div>
+<footer>
+    <div class="container" >
+        <div class="row justify-content-center">
+            <h4>Sponsors Principales</h4>
+            @foreach($sponsorsPrincipales as $sponsor)
+                <div class="col-md-3 mb-4" >
+                    <img src="{{ asset($sponsor->logo) }}" alt="Cartel de {{ $sponsor->nombre }}" class="sponsorImg">
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
-</div> -->
+</footer>
 
 </body>
 </html>

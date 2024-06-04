@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('CIF')->unique();
             $table->string('direccion');
             $table->float('precio');
-            // Otras columnas que puedas necesitar
             $table->timestamps();
         });
     }

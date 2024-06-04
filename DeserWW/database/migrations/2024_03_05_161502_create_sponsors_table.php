@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('logo');
             $table->string('direccion');
             $table->boolean('principal');
-            // Otras columnas que puedas necesitar
             $table->timestamps();
         });
     }
@@ -29,7 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Eliminar la tabla 'sponsors'
         Schema::dropIfExists('sponsors');
     }
 };

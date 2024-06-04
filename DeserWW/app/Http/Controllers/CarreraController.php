@@ -21,17 +21,35 @@ class CarreraController extends Controller
             ->orderBy('fecha_inicio', 'asc')
             ->first();
         // Obtener todas las carreras que comienzan en o después de la fecha actual
-        $datos = Carrera::where('fecha_inicio', '>=', Carbon::today())
+        $carrerasFuturas = Carrera::where('fecha_inicio', '>=', Carbon::today())
             ->orderBy('fecha_inicio', 'asc')
             ->get();
-        $sponsors = Sponsor::sponsorsPrincipales();
+        $sponsorsPrincipales = Sponsor::sponsorsPrincipales();
         // Pasar los datos a la vista
         return view('principal/menuprincipal', [
             'proximaCarrera' => $proximaCarrera,
-            'datos' => $datos,
-            'sponsors' => $sponsors
+            'carrerasFuturas' => $carrerasFuturas,
+            'sponsorsPrincipales' => $sponsorsPrincipales
         ]);
     }
+    // public function mostrarMenuPrincipal()
+    // {
+    //     // Obtener la próxima carrera
+    //     $proximaCarrera = Carrera::where('fecha_inicio', '>', Carbon::now())
+    //         ->orderBy('fecha_inicio', 'asc')
+    //         ->first();
+    //     // Obtener todas las carreras que comienzan en o después de la fecha actual
+    //     $datos = Carrera::where('fecha_inicio', '>=', Carbon::today())
+    //         ->orderBy('fecha_inicio', 'asc')
+    //         ->get();
+    //     $sponsors = Sponsor::sponsorsPrincipales();
+    //     // Pasar los datos a la vista
+    //     return view('principal/menuprincipal', [
+    //         'proximaCarrera' => $proximaCarrera,
+    //         'datos' => $datos,
+    //         'sponsors' => $sponsors
+    //     ]);
+    // }
     public function carreraInfo($id)
     {
         // Buscar la carrera por su ID

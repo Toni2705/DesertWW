@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('cartel');
             $table->float('precio_patrocinar');
             $table->float('precio_inscripcion');
-            // Otras columnas que puedas necesitar
             $table->timestamps();
         });
     }

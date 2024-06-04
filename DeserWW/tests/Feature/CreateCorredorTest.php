@@ -15,9 +15,9 @@ class CreateCorredorTest extends TestCase
      */
     public function test_create_corredor(): void
     {
-       if ($this->assertDatabaseMissing('corredors',['dni'=>'53638890S'])) {
+       if ($this->assertDatabaseMissing('corredors',['dni'=>'03142743T'])) {
         Corredor::factory()->create([
-            'dni'=> '53638890S',
+            'dni'=> '03142743T',
             'nombre'=> 'Pablo',
             'apellidos'=> 'Mateo',
             'contrasena'=> 'admin',
@@ -32,7 +32,7 @@ class CreateCorredorTest extends TestCase
 
         ]);
         $this->assertDatabaseHas('corredors',[
-            'dni'=> '53638890S',
+            'dni'=> '03142743T',
             'nombre'=> 'Pablo',
             'apellidos'=> 'Mateo',
             'contrasena'=> 'admin',

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->float('precio_principal');
-            // Otras columnas que puedas necesitar
             $table->timestamps();
         });
     }
