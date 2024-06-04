@@ -53,5 +53,22 @@ class DorsalController extends Controller
         return response()->json(['error' => 'El corredor no está autenticado'], 401);
     }
 }
+public function verificarInscripcion($carrera,$corredor)
+    {
+        $carrera_id = $carrera;
+        $corredor_id = $corredor;
+
+        // Buscar en la tabla dorsales
+        $dorsal = Dorsal::where('id_carrera', $carrera_id)
+                        ->where('id_corredor', $corredor_id)
+                        ->first();
+
+        // Verificar si se encontró alguna coincidencia
+        if ($dorsal) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

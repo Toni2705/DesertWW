@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Carrera;
 use App\Models\Corredor;
 use App\Models\Seguro;
@@ -9,6 +9,7 @@ use App\Models\Sponsor;
 use App\Models\Dorsal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\DorsalController;
 use Symfony\Component\VarDumper\VarDumper;
 
 class CarreraController extends Controller
@@ -54,6 +55,8 @@ class CarreraController extends Controller
     {
         // Buscar la carrera por su ID
         $carrera = Carrera::find($id);
+        $dorsalController = new DorsalController();
+        $inscrito = $dorsalController->verificarInscripcion($id, Auth::id());
 
         // Verificar si se encontró la carrera
         if ($carrera) {
@@ -64,7 +67,7 @@ class CarreraController extends Controller
             ->with('corredor') // Assuming Dorsal model has a relationship with Corredor
             ->get();
             // Retornar la vista con los datos de la carrera y los dorsales completados
-            return view('principal/carreraInfo', compact('carrera', 'seguros', 'dorsalesCompletados'));
+            return view('principal/carreraInfo', compact('carrera', 'seguros', 'dorsalesCompletados','inscrito'));
         } else {
             // Retornar una respuesta en caso de que la carrera no se encuentre
             return response()->json(['message' => 'Carrera no encontrada'], 404);

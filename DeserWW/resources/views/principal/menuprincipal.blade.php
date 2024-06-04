@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
+
+$idCorredor = Auth::id();
 ?>
 <!DOCTYPE html>
 <html lang="en">

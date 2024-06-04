@@ -58,7 +58,10 @@ $idCorredor = Auth::id();
 
 
         <?php
-        if (strtotime($carrera->fecha_inicio) >= strtotime('+10 days')) {
+        if($inscrito){
+            echo 'Ya estás inscrito';
+        } 
+        elseif (strtotime($carrera->fecha_inicio) >= strtotime('+10 days')) {
         ?>
             <!-- Botón para mostrar el formulario -->
             <form action="{{ route('comprobacion', ['precio' => $carrera->precio_inscripcion]) }}" method="GET">
@@ -134,7 +137,8 @@ $idCorredor = Auth::id();
                 <button type="submit" class="btn btn-primary">Inscribirse</button>
             </form>
         <?php
-        } elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
+        }
+        elseif (strtotime($carrera->fecha_inicio) < strtotime('+10 days') && strtotime($carrera->fecha_inicio) > strtotime('+1 days')) {
             echo 'No es posible inscribirse a esta carrera, faltan menos de 10 días para que comience.';
             
         } elseif (strtotime($carrera->fecha_inicio) <= strtotime('now') && strtotime($carrera->fecha_inicio) > strtotime('-1 day')) {
@@ -165,7 +169,8 @@ $idCorredor = Auth::id();
         <p>No hay dorsales completados para esta carrera.</p>
     @endif
         <?php
-        } else {
+        } 
+         else {
             echo 'No es posible inscribirse a esta carrera, ya ha finalizado.';
             ?>
             <a href="{{ route('mostrarFotos', ['id' => $carrera->id]) }}">Ver fotos</a>
