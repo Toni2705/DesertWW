@@ -4,10 +4,8 @@
             <a href="{{ route('mostrarMenuPrincipal')}}"><img src="{{ asset('images/logo.png') }}" alt="Icono" class="me-3"></a>
             <h4>Desert WorldWide</h4>
             <div class="text-right"> <!-- Centra los elementos internos -->
-                <a href="principal/mis-carreras"><p>Mis carreras</p></a>
                 <a href="principal/carreras"><p>¡Todas las competiciones!</p></a>
                 <div class="profile-dropdown">
-                    <a href="principal/perfil"><span>Perfil</span></a>
                     <a href="{{ route('logout') }}"><span>Cerrar sesión</span></a>
                 </div>
             </div>
