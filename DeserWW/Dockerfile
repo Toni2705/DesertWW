@@ -1,4 +1,3 @@
-# Usa la imagen oficial de PHP 8.2 con Apache como servidor web
 FROM php:8.2-apache
 
 # Actualiza el sistema y agrega dependencias necesarias
@@ -12,6 +11,8 @@ RUN apt-get update && \
         git \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd pdo pdo_mysql
+
+RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 
 # Establece el directorio de trabajo en el directorio raíz de la aplicación Laravel
 WORKDIR /var/www/html
@@ -29,6 +30,8 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Expone el puerto 80 para el servidor web
 EXPOSE 80
+
+EXPOSE 3306
 
 # Ejecuta el servidor Apache en primer plano cuando el contenedor se inicia
 CMD ["apache2-foreground"]
